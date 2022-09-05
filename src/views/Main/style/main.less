@@ -1,0 +1,100 @@
+.comic-main {
+  @padding: 40px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--box-bg-color);
+  border-top-left-radius: var(--df-radius);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &__break {
+    position: sticky;
+    top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.25s;
+    z-index: 8;
+
+    i {
+      color: var(--font-color);
+      font-size: 24px;
+      transform: rotateY(180deg);
+    }
+
+    &:hover {
+      transform: scale(0.8);
+    }
+  }
+
+  &__inner {
+    width: 95%;
+    margin: 0 auto;
+    animation-duration: 0.5s;
+  }
+
+  &__video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-top: @padding;
+    border-radius: var(--df-radius);
+    overflow: hidden;
+  }
+
+  &__box {
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    background: var(--bg-color);
+    border-radius: var(--df-radius);
+    color: var(--font-color);
+    margin: @padding 0;
+
+    ::v-deep(.el-tabs) {
+      .el-tabs__nav-wrap {
+        &::after {
+          content: unset;
+        }
+      }
+
+      .el-tabs__nav {
+        padding-bottom: 12px;
+      }
+
+      .el-tabs__item {
+        color: var(--font-unactive-color);
+        font-weight: 600;
+        font-size: 28px;
+
+        &.is-active {
+          color: var(--font-color);
+        }
+      }
+
+      .el-tabs__content {
+        overflow: unset;
+      }
+    }
+  }
+
+  &__anthology {
+    position: relative;
+    width: 100%;
+
+    &-loading {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+    }
+  }
+}

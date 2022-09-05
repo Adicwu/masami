@@ -1,0 +1,24 @@
+.home-child-title(@text) {
+  position: relative;
+
+  span {
+    font-size: 30px;
+  }
+
+  &::before {
+    content: @text;
+    opacity: 0.2;
+    background: -webkit-linear-gradient(90deg,
+        transparent,
+        var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 38px;
+    z-index: 1;
+    font-weight: 800;
+  }
+}

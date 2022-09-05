@@ -1,0 +1,43 @@
+{
+  "version": "0.0.2",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^1.1.1",
+    "@types/node": "^15.12.2",
+    "adicw-utils": "^1.1.1",
+    "axios": "^0.21.1",
+    "element-plus": "^2.0.5",
+    "moment": "^2.29.1",
+    "path": "^0.12.7",
+    "pinia": "^2.0.9",
+    "video.js": "^7.17.0",
+    "vue": "^3.2.31",
+    "vue-router": "^4.1.2"
+  },
+  "devDependencies": {
+    "@types/video.js": "^7.3.31",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "@vitejs/plugin-vue": "^1.2.3",
+    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/eslint-config-typescript": "^10.0.0",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "less": "^4.1.1",
+    "less-loader": "^9.1.0",
+    "prettier": "^2.3.2",
+    "typescript": "^4.6.2",
+    "unplugin-element-plus": "^0.4.0",
+    "unplugin-vue-components": "^0.17.21",
+    "vite": "^2.3.7",
+    "vite-plugin-compression": "^0.2.5",
+    "vite-plugin-style-import": "^0.10.1",
+    "vue-tsc": "^0.32.1"
+  }
+}

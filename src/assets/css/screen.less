@@ -1,0 +1,35 @@
+.screen {
+  // 搜索页 展示列表数量
+  --search-col-count: 8;
+  // 播放历史页 展示列表数量
+  --playhistory-col-count: 4;
+  // 追番页 展示列表数量
+  --favcomic-col-count: 6;
+
+  // 1920
+  @media screen and (max-width: 1600px) {
+    --search-col-count: 6;
+    --playhistory-col-count: 3;
+    --favcomic-col-count: 4;
+  }
+
+  // 1440
+  // @media screen and (max-width: 1200px) {
+  //   --search-col-count: 4;
+  //   --playhistory-col-count: 2;
+  // }
+
+  // 2560
+  @media screen and (min-width: 2300px) {
+    --search-col-count: 10;
+    --playhistory-col-count: 6;
+    --favcomic-col-count: 8;
+  }
+
+  // 3440
+  @media screen and (min-width: 3000px) {
+    --search-col-count: 14;
+    --playhistory-col-count: 8;
+    --favcomic-col-count: 10;
+  }
+}

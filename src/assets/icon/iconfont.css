@@ -1,0 +1,191 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3045542 */
+  src: url('iconfont.woff2?t=1660227218472') format('woff2'),
+       url('iconfont.woff?t=1660227218472') format('woff'),
+       url('iconfont.ttf?t=1660227218472') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sun:before {
+  content: "\e668";
+}
+
+.icon-moon:before {
+  content: "\e6c3";
+}
+
+.icon-close:before {
+  content: "\e69a";
+}
+
+.icon-zhidingzhanshi:before {
+  content: "\e770";
+}
+
+.icon-2zuixiaohua-1:before {
+  content: "\e65b";
+}
+
+.icon-details:before {
+  content: "\e638";
+}
+
+.icon-artwork:before {
+  content: "\eb19";
+}
+
+.icon-screen-restore:before {
+  content: "\e7ae";
+}
+
+.icon-enlarge:before {
+  content: "\e628";
+}
+
+.icon-narrow:before {
+  content: "\e62a";
+}
+
+.icon-more:before {
+  content: "\e633";
+}
+
+.icon-picture-in-picture-exit-fill:before {
+  content: "\ead3";
+}
+
+.icon-picture-in-picture-2-fill:before {
+  content: "\e96e";
+}
+
+.icon-fullscreen-4-3:before {
+  content: "\e8a0";
+}
+
+.icon-exit-fullscreen-4-3:before {
+  content: "\e8d0";
+}
+
+.icon-history:before {
+  content: "\e674";
+}
+
+.icon-rotate_b:before {
+  content: "\e6de";
+}
+
+.icon-full-screen:before {
+  content: "\e659";
+}
+
+.icon-exit-full-screen:before {
+  content: "\e65a";
+}
+
+.icon-arrow:before {
+  content: "\e627";
+}
+
+.icon-filter:before {
+  content: "\e6ef";
+}
+
+.icon-delete:before {
+  content: "\e67e";
+}
+
+.icon-delete1:before {
+  content: "\e6f2";
+}
+
+.icon-delete2:before {
+  content: "\e651";
+}
+
+.icon-iconfontsvgnext:before {
+  content: "\e629";
+}
+
+.icon-bell:before {
+  content: "\e625";
+}
+
+.icon-log-out:before {
+  content: "\e699";
+}
+
+.icon-add1:before {
+  content: "\e71c";
+}
+
+.icon-tubiaozhizuomoban-:before {
+  content: "\e606";
+}
+
+.icon-iconlove:before {
+  content: "\e619";
+}
+
+.icon-icon_love_hover:before {
+  content: "\e69c";
+}
+
+.icon-icon_love:before {
+  content: "\e69d";
+}
+
+.icon-setting1:before {
+  content: "\e61a";
+}
+
+.icon-user:before {
+  content: "\e63c";
+}
+
+.icon-homefill:before {
+  content: "\e6bb";
+}
+
+.icon-iconsearch:before {
+  content: "\e605";
+}
+
+.icon-search:before {
+  content: "\e70d";
+}
+
+.icon-iccosplay:before {
+  content: "\e698";
+}
+
+.icon-player:before {
+  content: "\eb17";
+}
+
+.icon-player-fill:before {
+  content: "\eb18";
+}
+
+.icon-mute:before {
+  content: "\e733";
+}
+
+.icon-volume:before {
+  content: "\e740";
+}
+
+.icon-pause:before {
+  content: "\e600";
+}
+
+.icon-play:before {
+  content: "\e637";
+}
+

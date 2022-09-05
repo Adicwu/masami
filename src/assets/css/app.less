@@ -1,0 +1,119 @@
+@import './screen';
+
+body {
+  --df-radius: 24px;
+}
+
+#app {
+  .screen;
+  position: relative;
+  width: 100%;
+  min-width: 1200px;
+  height: 100vh;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
+
+  // 骨架屏
+  .aw-skeleton {
+    background: linear-gradient(90deg, #def 25%, #fff 37%, #def 63%);
+    background-size: 400% 100%;
+    animation: el-skeleton-loading 1.4s ease infinite;
+    color: rgb(0 0 0 / 0);
+  }
+
+  @keyframes el-skeleton-loading {
+    0% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0 50%;
+    }
+  }
+
+  .fade-in {
+    animation: fade 0.5s linear;
+  }
+
+  .fade-out {
+    animation: fade 0.5s linear reverse;
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .slide {
+    &-in-up {
+      animation: slide-y 1.25s forwards;
+    }
+
+    &-out-up {
+      animation: slide-y 0.25s forwards reverse;
+    }
+
+    @keyframes slide-y {
+      from {
+        transform: translateY(100%);
+      }
+
+      to {
+        transform: translateY(0);
+      }
+    }
+  }
+
+}
+
+
+
+// elementPlus 样式覆盖
+.el-input__inner {
+  color: #333 !important;
+}
+
+.el-popover {
+  color: #333 !important;
+
+  .el-popconfirm__main {
+    padding-bottom: 6px;
+  }
+}
+
+.el-notification {
+  background-color: var(--bg-color) !important;
+  border: unset !important;
+
+  .el-notification__title {
+    color: var(--font-color) !important;
+  }
+}
+
+.el-color-picker__panel {
+  .el-color-dropdown__btn {
+    color: #333 !important;
+  }
+}
+
+.el-pagination {
+  .el-pagination__jump {
+    color: #333 !important;
+  }
+}
+
+.el-select-dropdown__item {
+  color: #333 !important;
+
+  &.selected {
+    color: var(--primary-color) !important;
+  }
+}

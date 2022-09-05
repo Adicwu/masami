@@ -1,0 +1,35 @@
+// 超出换行段落
+.p-truncate(@line: 1) {
+  display: -webkit-box !important;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @line;
+  -moz-box-orient: vertical;
+  -moz-line-clamp: @line;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+// 伪类遮罩
+.mask(@index: 1, @background: none) {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: @index;
+  background: @background;
+}
+
+// 字体高度与实际高度相同的行
+.font-format(@height: 10px) {
+  height: @height;
+  line-height: @height;
+}
+
+.aspect-ratio(@proportion: 9 / 16) {
+  padding-top: calc(100% * @proportion);
+}
