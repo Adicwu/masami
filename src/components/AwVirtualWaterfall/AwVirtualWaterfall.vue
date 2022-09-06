@@ -16,7 +16,7 @@
 <script lang="ts" setup>
 import { useResizeListener } from '@/hooks/utils'
 import { eventThrottle } from '@/utils/adLoadsh'
-import { debounce, throttle } from 'adicw-utils'
+import { debounce } from 'adicw-utils'
 import {
   computed,
   CSSProperties,
@@ -134,30 +134,15 @@ const awItem = computed(() =>
 const requestSize = computed(
   () => props.requestSize || props.column * props.columnItemCount
 )
-/** 子项rect */
-// const itemRect = computed(() => ({
-//   width: (scroll.width / props.column) | 0
-// }))
 const hasMoreData = computed(() => columns.usedDataLen < reList.data.length)
 const columnsQueueList = computed(() =>
-  columns.queue.reduce<Type.ColumnsQueue['list']>((totol, item) => {
-    totol.push(...item.list)
-    return totol
-  }, [])
+  columns.queue.reduce<Type.ColumnsQueue['list']>(
+    (totol, item) => totol.concat(item.list),
+    []
+  )
 )
 /** 实际视图渲染使用的data */
 const renderedData = computed(() =>
-  // columnsQueueList.value.reduce<
-  //   (Type.ColumnsQueue['list'][0] & { id: string | number })[]
-  // >((totol, item) => {
-  //   if (item.y + item.h > scroll.start && item.y < scroll.end) {
-  //     totol.push({
-  //       id: item.item.id,
-  //       ...item
-  //     })
-  //   }
-  //   return totol
-  // }, [])
   columnsQueueList.value.filter(
     (item) => item.y + item.h > scroll.start && item.y < scroll.end
   )
@@ -177,7 +162,6 @@ const { onIsBindChanged, getTarget } = (() => {
       !hasMoreData.value &&
       clientHeight + scrollTop > columnsExtremeHeight.value.max * 0.7
     ) {
-      // console.log('request')
       await loadMoreData()
     }
     if (
@@ -324,13 +308,6 @@ const init = async () => {
   addToQueue(requestSize.value)
 }
 
-// useEventListener(
-//   'resize',
-//   debounce(async () => {
-//     initRect()
-//     repaint()
-//   }, 300)
-// )
 useResizeListener(
   getTarget,
   debounce(() => {
@@ -347,10 +324,6 @@ onMounted(init)
 
 onUnmounted(() => {
   onIsBindChanged(false)
-})
-
-defineExpose({
-  // Type
 })
 </script>
 <style lang="less" scoped>
