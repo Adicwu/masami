@@ -30,7 +30,7 @@ import { computed, defineComponent, ref } from 'vue'
 import AppTabBarComiclist from './AppTabBarComiclist.vue'
 import { getThemeInstance } from '@/theme/theme.class'
 import { DF_SYSTEM_COLOR, THEME_DARK, THEME_PINK } from '@/theme/static'
-import { debounce } from 'adicw-utils'
+import { debounce } from '@sorarain/utils'
 
 function daytimeModule() {
   const daytimeType = ref(true)

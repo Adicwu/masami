@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { useWindowSize } from 'adicw-utils'
+import { useWindowSize } from '@sorarain/use'
 import {
   CSSProperties,
   defineComponent,

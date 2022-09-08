@@ -39,7 +39,8 @@ import {
   ref,
   watch
 } from 'vue'
-import { numLimit, sToMs, onWindowSizeChange } from 'adicw-utils'
+import { numLimit, sToMs } from '@sorarain/utils'
+import { onWindowSizeChange } from '@sorarain/use'
 import AwSlider from '@/components/AwSlider/AwSlider.vue'
 export default defineComponent({
   name: 'AwVideoProgress',

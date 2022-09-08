@@ -21,7 +21,7 @@ import {
 } from 'vue'
 
 import { useIsDev } from '@/hooks/utils'
-import { useEventListener } from 'adicw-utils'
+import { useEventListener } from '@sorarain/use'
 import * as Type from './type'
 
 export default defineComponent({

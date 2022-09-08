@@ -1,5 +1,5 @@
 import { useExpose, useResizeListener } from '@/hooks/utils'
-import { useParent } from 'adicw-utils'
+import { useParent } from '@sorarain/use'
 import { defineComponent, h, reactive, ref } from 'vue'
 import * as Type from './type'
 import { AWVIRTUALLIST_KEY } from './utils'

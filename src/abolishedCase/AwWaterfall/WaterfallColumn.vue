@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { useParent } from 'adicw-utils'
+import { useParent } from '@sorarain/use'
 import {
   computed,
   defineComponent,

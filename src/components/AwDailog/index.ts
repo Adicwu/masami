@@ -1,5 +1,5 @@
 import AwDailogVue from './AwDailog.vue'
-import { mountComponent } from 'adicw-utils'
+import { mountComponent } from '@sorarain/use'
 import { ComponentPublicInstance, Plugin } from 'vue'
 import * as Type from './type'
 

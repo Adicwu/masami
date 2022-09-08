@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType, reactive } from 'vue'
-import { getVal } from 'adicw-utils'
+import { getVal } from '@sorarain/utils'
 
 import AwRadio, { Option } from '@comps/Form/AwRadio.vue'
 import * as SectionType from '../types/homeSection.type'

@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { CSSProperties, defineComponent, onMounted, ref, computed } from 'vue'
-import { useParent } from 'adicw-utils'
+import { useParent } from '@sorarain/use'
 import { AWTABS_KEY } from './static'
 export default defineComponent({
   name: 'AwTab',
@@ -35,7 +35,7 @@ export default defineComponent({
       loaded.value = res
     }
     onMounted(() => {
-      broLength.value = parent.children.length
+      broLength.value = parent!.children.length
     })
 
     return {

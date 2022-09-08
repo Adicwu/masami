@@ -66,15 +66,14 @@ import { getThemeInstance } from '@/theme/theme.class'
 import ThemeColorEditor, {
   ThemeColorVar
 } from './components/ThemeColorEditor.vue'
-import { ElForm, ElNotification } from 'element-plus'
+import { ElForm, ElNotification, FormRules } from 'element-plus'
 import { useSystemConfigStore } from '@/stores/systemConfig.store'
-import { FormRulesMap } from 'element-plus/lib/components/form/src/form.type'
 import { useIsDev } from '@/hooks/utils'
 import { REGEX_IMG } from '@/utils/regex'
 import { AwDailog } from '@/components/AwDailog'
 
 interface ConfigForm {
-  formRules: FormRulesMap
+  formRules: FormRules
   save: () => void
 }
 

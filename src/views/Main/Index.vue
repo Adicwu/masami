@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts">
-import { getVal, sToMs } from 'adicw-utils'
+import { getVal, sToMs } from '@sorarain/utils'
 import {
   computed,
   defineComponent,

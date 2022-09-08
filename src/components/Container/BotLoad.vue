@@ -15,7 +15,7 @@ import {
   PropType,
   ref
 } from 'vue'
-import { throttle } from 'adicw-utils'
+import { throttle } from '@sorarain/utils'
 export default defineComponent({
   name: 'BotLoad',
   props: {

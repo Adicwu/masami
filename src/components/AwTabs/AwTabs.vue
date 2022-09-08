@@ -32,7 +32,7 @@ import {
 
 import AwTab from './AwTab.vue'
 
-import { useChildren } from 'adicw-utils'
+import { useChildren } from '@sorarain/use'
 import { AWTABS_KEY } from './static'
 
 export default defineComponent({

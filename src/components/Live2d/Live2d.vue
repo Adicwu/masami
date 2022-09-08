@@ -8,7 +8,7 @@
 import { computed, CSSProperties, defineComponent, reactive, ref } from 'vue'
 import { LIVE2D_CDNS } from './static'
 import Moveable from '@/directs/moveable.direct'
-import { wait } from 'adicw-utils'
+import { wait } from '@sorarain/utils'
 
 /** 初始化参数 */
 export interface InitOption {

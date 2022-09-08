@@ -1,6 +1,6 @@
 <template>
   <div ref="selfEl" class="aw-waterfall" :style="selfStyle">
-    <slot name="content" :column="column" :orgData="reList.data" />
+    <slot name="content" :column="column" :org-data="reList.data" />
   </div>
 </template>
 
@@ -18,8 +18,8 @@ import {
 import { arrayAverag, WATERFALL_KEY } from './utils'
 import * as Type from './type'
 import WaterfallColumn from './WaterfallColumn.vue'
-import { useEventListener, useChildren } from 'adicw-utils'
-import { throttle } from 'adicw-utils'
+import { useEventListener, useChildren } from '@sorarain/use'
+import { throttle } from '@sorarain/utils'
 
 const props = withDefaults(
   defineProps<{

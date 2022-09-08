@@ -44,7 +44,7 @@ import {
   watch
 } from 'vue'
 import { AWSLIDE_KEY } from './const'
-import { useChildren, onWindowSizeChange } from 'adicw-utils'
+import { useChildren, onWindowSizeChange } from '@sorarain/use'
 
 interface Slider {
   /** 当前激活下标 */

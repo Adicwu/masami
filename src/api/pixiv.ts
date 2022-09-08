@@ -1,7 +1,7 @@
 import { dfGetax } from '@/common/request/index'
 import * as FnReturns from './type'
 import * as ApiReturns from './api.type'
-import { getVal } from 'adicw-utils'
+import { getVal } from '@sorarain/utils'
 import { vilipixSearchResultFormat, vilipixImgPathFormat } from './utils'
 
 // const BaseUrl = 'http://localhost:3001'

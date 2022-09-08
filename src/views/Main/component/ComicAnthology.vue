@@ -43,7 +43,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType, ref } from 'vue'
-import { arrAvgSplit } from 'adicw-utils'
+import { arrAvgSplit } from '@sorarain/utils'
 
 import { videoUrlFormat } from '@/api/utils'
 

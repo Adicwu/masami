@@ -16,7 +16,7 @@
 <script lang="ts" setup>
 import { useResizeListener } from '@/hooks/utils'
 import { eventThrottle } from '@/utils/adLoadsh'
-import { debounce } from 'adicw-utils'
+import { debounce } from '@sorarain/utils'
 import {
   computed,
   CSSProperties,

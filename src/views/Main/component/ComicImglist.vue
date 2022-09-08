@@ -30,7 +30,7 @@
 import { onBeforeUpdate, nextTick, ref, reactive, computed } from 'vue'
 import * as Api from '@apis/index'
 import { useResizeListener } from '@/hooks/utils'
-import { debounce } from 'adicw-utils'
+import { debounce } from '@sorarain/utils'
 import ImagePreview from '@/components/AwImagePreview/ImagePreview.vue'
 
 const props = withDefaults(

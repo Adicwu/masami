@@ -39,7 +39,8 @@ import {
 } from 'vue'
 
 import { useResizeListener } from '@/hooks/utils'
-import { debounce, numLimit, useEventListener } from 'adicw-utils'
+import { debounce, numLimit } from '@sorarain/utils'
+import { useEventListener } from '@sorarain/use'
 // todo 蜜汁鬼畜
 export default defineComponent({
   name: 'AwSlider',

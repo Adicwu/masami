@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-import { jsonParse } from 'adicw-utils'
+import { jsonParse } from '@sorarain/utils'
 
 export default class BaseList<K = string, V = any> {
   /**

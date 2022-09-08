@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { AWSLIDE_KEY } from './const'
-import { useParent } from 'adicw-utils'
+import { useParent } from '@sorarain/use'
 export default defineComponent({
   name: 'AwSlideItem',
   setup() {

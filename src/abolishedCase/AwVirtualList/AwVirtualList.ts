@@ -9,7 +9,7 @@ import {
   reactive,
   ref
 } from 'vue'
-import { useChildren } from 'adicw-utils'
+import { useChildren } from '@sorarain/use'
 import { AWVIRTUALLIST_KEY } from './utils'
 import AwVirtualListItem from './AwVirtualListItem'
 import * as Type from './type'

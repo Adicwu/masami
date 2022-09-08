@@ -1,4 +1,4 @@
-import { jsonParse } from 'adicw-utils'
+import { jsonParse } from '@sorarain/utils'
 import { ref } from 'vue'
 
 interface BaseCacheItem {

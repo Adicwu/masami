@@ -1,4 +1,4 @@
-import { numLimit } from 'adicw-utils'
+import { numLimit } from '@sorarain/utils'
 import { ObjectDirective } from 'vue'
 
 /**

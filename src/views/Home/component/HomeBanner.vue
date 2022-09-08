@@ -89,7 +89,7 @@ import {
   shallowReactive,
   watch
 } from 'vue'
-import { wait } from 'adicw-utils'
+import { wait } from '@sorarain/utils'
 
 import AwSlideX from '@comps/AwSlide/AwSlideX.vue'
 import AwSlideItem from '@comps/AwSlide/AwSlideItem.vue'
@@ -299,13 +299,13 @@ export default defineComponent({
             width: 8px;
             margin-left: 4px;
           }
-        }
-        ::v-deep(.el-button--default) {
-          background: unset;
-          color: #fff;
           &:first-child {
             background: var(--primary-color);
             border-color: var(--primary-color);
+          }
+          &:last-child {
+            background: unset;
+            color: #fff;
           }
         }
       }

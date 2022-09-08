@@ -1,4 +1,4 @@
-import { getVal } from 'adicw-utils'
+import { getVal } from '@sorarain/utils'
 import { ElNotification } from 'element-plus'
 import * as ApiReturns from './api.type'
 

@@ -23,12 +23,8 @@ import {
   toRefs,
   Ref
 } from 'vue'
-import {
-  numLimit,
-  throttle,
-  useEventListener,
-  onWindowSizeChange
-} from 'adicw-utils'
+import { numLimit, throttle } from '@sorarain/utils'
+import { useEventListener, onWindowSizeChange } from '@sorarain/use'
 import { getRealStyle } from '@/utils/dom'
 
 interface Img {

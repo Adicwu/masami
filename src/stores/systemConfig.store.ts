@@ -1,4 +1,4 @@
-import { jsonParse } from 'adicw-utils'
+import { jsonParse } from '@sorarain/utils'
 import { defineStore } from 'pinia'
 
 const REQUEST_BASEURL_STORE_KEY = 'REQUEST_BASEURL_STORE'

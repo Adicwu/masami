@@ -1,5 +1,5 @@
 import { domObserver } from '@/utils/dom'
-import { useEventListener } from 'adicw-utils'
+import { useEventListener } from '@sorarain/use'
 import {
   customRef,
   getCurrentInstance,

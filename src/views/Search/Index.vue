@@ -96,7 +96,7 @@
 </template>
 
 <script lang="ts">
-import { getVal, wait } from 'adicw-utils'
+import { getVal, wait } from '@sorarain/utils'
 import { computed, defineComponent, reactive, ref, shallowReactive } from 'vue'
 
 import SearchHeader from '@/components/Form/SearchHeader.vue'

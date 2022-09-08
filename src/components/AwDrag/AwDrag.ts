@@ -1,4 +1,5 @@
-import { jsonParse, useElementRect } from 'adicw-utils'
+import { jsonParse } from '@sorarain/utils'
+import { useElementRect } from '@sorarain/use'
 import {
   computed,
   CSSProperties,

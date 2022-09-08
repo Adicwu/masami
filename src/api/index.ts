@@ -1,5 +1,5 @@
 import { getax } from '@/common/request/index'
-import { getVal } from 'adicw-utils'
+import { getVal } from '@sorarain/utils'
 import * as FnReturns from './type'
 import * as ApiType from './api.type'
 import { newError, badRequestNotify } from './utils'

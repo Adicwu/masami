@@ -27,7 +27,7 @@ import {
 } from 'vue'
 import * as Type from '../../components/AwVirtualWaterfall/type'
 import AwVirtualWaterfallItem from '../../components/AwVirtualWaterfall/AwVirtualWaterfallItem.vue'
-import { deepCopy } from 'adicw-utils'
+import { deepCopy } from '@sorarain/utils'
 import { throttle } from '@/utils/adLoadsh'
 
 const props = withDefaults(

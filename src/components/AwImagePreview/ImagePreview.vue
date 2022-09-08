@@ -69,7 +69,7 @@ import {
   watch
 } from 'vue'
 
-import { throttle } from 'adicw-utils'
+import { throttle } from '@sorarain/utils'
 import { getImgStatus } from '@/utils/dom'
 import { ImgIndex, Self, ModeArgs, Options, ImagePreviewProps } from './type'
 

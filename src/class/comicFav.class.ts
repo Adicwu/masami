@@ -1,4 +1,4 @@
-import { jsonParse, arrChildSwap } from 'adicw-utils'
+import { jsonParse, arrChildSwap } from '@sorarain/utils'
 import { ref } from 'vue'
 
 const COMIC_FAV_STORE_KEY = 'COMIC_FAV_STORE'

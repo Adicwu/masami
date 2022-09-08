@@ -201,7 +201,7 @@ import {
   sToMs,
   throttle,
   timeToS
-} from 'adicw-utils'
+} from '@sorarain/utils'
 import { computed, reactive, ref, shallowReactive } from 'vue'
 
 import AwVideoMask from './AwVideoMask.vue'
@@ -211,7 +211,7 @@ import VideoRender from './VideoRender.vue'
 
 import vClickOutside from '@/directs/clickOutside.direct'
 import { getVideoScreenshot } from '@/utils/media'
-import { useEventListener } from 'adicw-utils'
+import { useEventListener } from '@sorarain/use'
 import * as Type from './type'
 
 // type Props = ExtractPropTypes<typeof props>

@@ -7,7 +7,7 @@
   ></div>
 </template>
 <script lang="ts">
-import { throttle } from 'adicw-utils'
+import { throttle } from '@sorarain/utils'
 import {
   computed,
   CSSProperties,
