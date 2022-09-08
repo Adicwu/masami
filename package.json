@@ -7,18 +7,20 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.1",
-    "@types/node": "^15.12.2",
-    "adicw-utils": "^1.1.1",
+    "@sorarain/use": "^1.1.0",
+    "@sorarain/utils": "^1.0.7",
     "axios": "^0.21.1",
     "element-plus": "^2.0.5",
     "moment": "^2.29.1",
     "path": "^0.12.7",
     "pinia": "^2.0.9",
+    "sorarain": "^0.5.3",
     "video.js": "^7.17.0",
     "vue": "^3.2.31",
-    "vue-router": "^4.1.2"
+    "vue-router": "4.1.2"
   },
   "devDependencies": {
+    "@types/node": "^18.7.16",
     "@types/video.js": "^7.3.31",
     "@typescript-eslint/eslint-plugin": "^5.8.0",
     "@typescript-eslint/parser": "^5.8.0",
@@ -38,6 +40,6 @@
     "vite": "^2.3.7",
     "vite-plugin-compression": "^0.2.5",
     "vite-plugin-style-import": "^0.10.1",
-    "vue-tsc": "^0.32.1"
+    "vue-tsc": "^0.40.12"
   }
 }
