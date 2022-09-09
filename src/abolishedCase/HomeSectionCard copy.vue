@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div
     v-if="detail"
     class="home-section__card"
@@ -76,4 +76,4 @@ export default defineComponent({
     }
   }
 }
-</style>
+</style> -->

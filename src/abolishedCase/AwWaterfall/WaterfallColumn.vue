@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div ref="selfEl" class="aw-waterfall__column" :style="selfStyle">
     <slot name="content" :data="state.realList" />
   </div>
@@ -90,4 +90,4 @@ export default defineComponent({
   flex: v-bind(1 / columnSize);
   height: max-content;
 }
-</style>
+</style> -->

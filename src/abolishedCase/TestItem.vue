@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="test-item" @click="num++">{{ id }} + {{ num }}</div>
 </template>
 
@@ -38,4 +38,4 @@ export default defineComponent({
 .test-item {
   font-size: 30px;
 }
-</style>
+</style> -->

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div ref="selfEl" class="aw-waterfall" :style="selfStyle">
     <slot name="content" :column="column" :org-data="reList.data" />
   </div>
@@ -206,4 +206,4 @@ onBeforeUnmount(removeEvent)
   width: 100%;
   display: flex;
 }
-</style>
+</style> -->

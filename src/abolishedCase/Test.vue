@@ -1,10 +1,10 @@
-<template>
+<!-- <template>
   <div class="test">
-    <!-- <keep-alive>
+    <keep-alive>
       <keep-alive v-for="item in list" :key="item.id">
         <TestItem :id="item.id" />
       </keep-alive>
-    </keep-alive> -->
+    </keep-alive>
     <AwComponentsAlive>
       <TestItem v-for="item in list" :id="item.id" :key="item.id" />
     </AwComponentsAlive>
@@ -25,4 +25,4 @@ const list = ref([{ id: 1 }, { id: 2 }, { id: 3 }])
 .test {
   color: #fff;
 }
-</style>
+</style> -->

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div v-show="loaded" class="pixiv-content__item">
     <img :src="detail.preurl" @load="loaded = true" />
     <div v-if="detail.total > 1" class="total">
@@ -72,4 +72,4 @@ const loaded = ref(false)
     font-variant-numeric: tabular-nums;
   }
 }
-</style>
+</style> -->
