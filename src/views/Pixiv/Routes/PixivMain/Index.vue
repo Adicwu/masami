@@ -61,7 +61,6 @@
 
 <script lang="ts">
 import { getVilipixPicMain } from '@/api'
-import LazySrc from '@/directs/lazySrc.direct'
 import { PixivMainParams, toPixivPainter } from '@/router/jump'
 import * as Api from '@apis/index'
 import { jsonParse } from '@sorarain/utils'
@@ -201,9 +200,6 @@ export default defineComponent({
   name: 'PixivMain',
   components: {
     PixivCircleBack
-  },
-  directives: {
-    LazySrc
   },
   props: {
     id: {

@@ -126,7 +126,14 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@sorarain/use@^1.1.0", "@sorarain/use@workspace:^1.1.0":
+"@sorarain/use@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.npmjs.org/@sorarain/use/-/use-1.1.3.tgz#69d590c1027de28f467a786e33b56502a275e3d7"
+  integrity sha512-ZwCDVRbxd7uo/zBnoTVVjsCwxmwAnuy6yh2b+iUVNzqCCzZmMkPVJ4SGbvSix8YvP4SQyvNkygdtnvpErVexEA==
+  dependencies:
+    "@sorarain/utils" "workspace:^1.0.7"
+
+"@sorarain/use@workspace:^1.1.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@sorarain/use/-/use-1.1.0.tgz#021006361cba8caa64b7d6db929bfef4aaa09145"
   integrity sha512-7mAVqdfk7CBN5LLJdNQ+YW8qqDtxve7SHa2/pMP4zwjKtCeJH1Pbo6dWud19HSZwSmG0mrfzWrWH2UC5yurMjg==

@@ -19,14 +19,14 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, reactive, ref } from 'vue'
 
-import LazyBackgroudImg from '@/directs/lazyBackgroudImg.direct'
+import { lazyBackgroudImg } from '@sorarain/use'
 import { debounce } from '@sorarain/utils'
 import { useEventListener } from '@sorarain/use'
 
 export default defineComponent({
   name: 'HoverImgCard',
   directives: {
-    LazyBackgroudImg
+    lazyBackgroudImg
   },
   props: {
     src: {

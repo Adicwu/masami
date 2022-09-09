@@ -47,7 +47,7 @@
             搜索记录
             <Icon name="delete" @click="$emit('clearHistory')" />
           </div>
-          <ListVueTransition tag="ul" class="list">
+          <AwListVueTransition tag="ul" class="list">
             <li
               v-for="item in props.history"
               :key="item.date"
@@ -59,7 +59,7 @@
                 @click.stop="$emit('deleteHistory', item.value)"
               />
             </li>
-          </ListVueTransition>
+          </AwListVueTransition>
         </div>
       </transition>
     </div>
@@ -68,8 +68,7 @@
 </template>
 
 <script lang="ts" setup>
-import ListVueTransition from '@/components/Transition/ListVueTransition.vue'
-import vClickOutside from '@/directs/clickOutside.direct'
+import { AwListVueTransition } from 'sorarain'
 import { reactive, ref } from 'vue'
 
 interface History {

@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.1",
-    "@sorarain/use": "^1.1.0",
+    "@sorarain/use": "^1.1.3",
     "@sorarain/utils": "^1.0.7",
     "axios": "^0.21.1",
     "element-plus": "^2.0.5",

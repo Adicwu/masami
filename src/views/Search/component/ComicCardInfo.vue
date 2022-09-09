@@ -8,9 +8,10 @@
 </template>
 
 <script lang="ts">
-import * as Api from '@/api'
-import lazyBackgroudImg from '@/directs/lazyBackgroudImg.direct'
 import { defineComponent, PropType } from 'vue'
+
+import * as Api from '@/api'
+import { lazyBackgroudImg } from '@sorarain/use'
 
 export default defineComponent({
   name: 'ComicCardInfo',

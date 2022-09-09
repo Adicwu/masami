@@ -209,7 +209,6 @@ import AwVideoMsg, { NotifyItem } from './AwVideoMsg.vue'
 import AwVideoProgress from './AwVideoProgress.vue'
 import VideoRender from './VideoRender.vue'
 
-import vClickOutside from '@/directs/clickOutside.direct'
 import { getVideoScreenshot } from '@/utils/media'
 import { useEventListener } from '@sorarain/use'
 import * as Type from './type'

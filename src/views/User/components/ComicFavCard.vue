@@ -42,7 +42,7 @@
 import { computed, defineComponent, PropType } from 'vue'
 import moment from 'moment'
 
-import { AwDrag, ExchangeParam } from '@/components/AwDrag/AwDrag'
+import { AwDrag, AwDragExchangeParam } from 'sorarain'
 
 import { ComicFavItem } from '@/class/comicFav.class'
 import { toComicMain } from '@/router/jump'
@@ -77,7 +77,7 @@ export default defineComponent({
     })
 
     const deleteFav = () => favStore.comicFav(props.detail!)
-    const posExchange = ({ from, to }: ExchangeParam) => {
+    const posExchange = ({ from, to }: AwDragExchangeParam) => {
       favStore.exChange(from, to)
     }
 

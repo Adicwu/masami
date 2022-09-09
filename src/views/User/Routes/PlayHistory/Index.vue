@@ -21,7 +21,7 @@
           :timestamp="String(time)"
           placement="top"
         >
-          <ListVueTransition class="play-history__content">
+          <AwListVueTransition class="play-history__content">
             <CodepenCard v-for="item in list" :key="item.id" :detail="item">
               <template #cover>
                 <div class="cover-info">
@@ -45,7 +45,7 @@
                 }}</span>
               </template>
             </CodepenCard>
-          </ListVueTransition>
+          </AwListVueTransition>
         </el-timeline-item>
       </el-timeline>
     </template>
@@ -70,7 +70,7 @@ import CodepenCard, {
   Detail as CodepenCardDetail
 } from '@comps/Card/CodepenCard.vue'
 import EmptyImgBlock from '@comps/Block/EmptyImgBlock.vue'
-import ListVueTransition from '@/components/Transition/ListVueTransition.vue'
+import { AwListVueTransition } from 'sorarain'
 import BotLoad from '@/components/Container/BotLoad.vue'
 
 export default defineComponent({
@@ -78,7 +78,7 @@ export default defineComponent({
   components: {
     CodepenCard,
     EmptyImgBlock,
-    ListVueTransition,
+    AwListVueTransition,
     BotLoad
   },
   setup() {
