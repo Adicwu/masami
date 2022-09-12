@@ -1,13 +1,13 @@
 <template>
   <div class="comic-favlist">
-    <AwListVueTransition v-if="favs.length > 0" class="comic-favlist__content">
+    <AwListModifyTransition v-if="favs.length > 0" class="comic-favlist__content">
       <ComicFavCard
         v-for="comic in favs"
         :id="comic.comicId"
         :key="comic.comicId"
         :detail="comic"
       />
-    </AwListVueTransition>
+    </AwListModifyTransition>
     <EmptyImgBlock
       v-else
       class="comic-favlist__empty"
@@ -25,7 +25,7 @@ import { computed, defineComponent } from 'vue'
 
 import EmptyImgBlock from '@comps/Block/EmptyImgBlock.vue'
 import ComicFavCard from '../../components/ComicFavCard.vue'
-import { AwListVueTransition } from 'sorarain'
+import { AwListModifyTransition } from 'sorarain'
 
 import { usePageOut } from '@/hooks/utils'
 import { useFavStore } from '@/stores/fav.store'
@@ -34,7 +34,7 @@ export default defineComponent({
   name: 'ComicFavlist',
   components: {
     ComicFavCard,
-    AwListVueTransition,
+    AwListModifyTransition,
     EmptyImgBlock
   },
   setup() {

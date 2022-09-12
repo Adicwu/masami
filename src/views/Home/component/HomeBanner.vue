@@ -7,7 +7,7 @@
         arrow="never"
         :interval="6000"
         :pause-on-hover="false"
-        @change="(e) => onCarouselChange(+e)"
+        @change="onCarouselChange"
       >
         <el-carousel-item v-for="(item, index) in realBanner" :key="index">
           <BaseImg :src="item.cover" :lazy="false" />

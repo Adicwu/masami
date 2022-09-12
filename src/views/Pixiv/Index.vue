@@ -34,8 +34,7 @@
           target=".pixiv-content"
           :column="5"
           :request-size="state.requestSize"
-          :requset="fetchPixiv"
-          :gap="26"
+          :request="fetchPixiv"
           @onNoMoreResult="onNoMoreResult"
         >
           <template #item="{ item }">
@@ -69,7 +68,7 @@
 import { ComicSearchItem, getVilipixHotTags, vilipixSearch } from '@/api'
 import * as ApiReturns from '@/api/api.type'
 import AwSearchLoading from '@/components/AwSearchLoading/AwSearchLoading.vue'
-import { AwVirtualWaterfall, AwVirtualWaterfallRequset } from 'sorarain'
+import { AwVirtualWaterfall, AwVirtualWaterfallRequest } from 'sorarain'
 import SearchHeader from '@/components/Form/SearchHeader.vue'
 import { toPixivMain } from '@/router/jump'
 import { ElMessage } from 'element-plus'
@@ -92,7 +91,7 @@ const state = reactive({
   hotTags: [] as string[]
 })
 
-const fetchPixiv: AwVirtualWaterfallRequset = async (tpage, size) => {
+const fetchPixiv: AwVirtualWaterfallRequest = async (tpage, size) => {
   const { list, total } = await vilipixSearch({
     limit: size,
     offset: --tpage * size,
