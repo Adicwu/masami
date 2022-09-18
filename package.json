@@ -1,5 +1,6 @@
 {
-  "version": "0.0.2",
+  "name": "masami",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite --host",
     "build": "vue-tsc --noEmit && vite build",
