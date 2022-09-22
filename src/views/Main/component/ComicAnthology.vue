@@ -48,7 +48,7 @@ import { arrAvgSplit } from '@sorarain/utils'
 import { videoUrlFormat } from '@/api/utils'
 
 export interface Option {
-  name: string | number
+  name: string
   value: string
 }
 export type ChangeReturns = Option & {
@@ -63,8 +63,8 @@ export default defineComponent({
       default: ''
     },
     active: {
-      type: [String, Number],
-      default: 0
+      type: String,
+      default: ''
     },
     list: {
       type: Array as PropType<Option[]>,
