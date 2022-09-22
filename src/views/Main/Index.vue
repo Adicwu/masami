@@ -13,10 +13,13 @@
           :init-current-time="initPlayerCurrentTime"
           :requesting="isPending"
           :btn-icon="systemConfigStore.staticResource.videoProgressCurIcon"
+          :current-episode="anthology.current"
+          :episodes="anthologyCurrentList"
           @next="nextAnthology"
           @ended="nextAnthology"
           @error="onVideoError"
           @fullscreen="onFullscreen"
+          @changeCurrentEpisode="onCurrentAnthologyChange"
         />
       </div>
       <div class="comic-main__box">
@@ -31,12 +34,7 @@
                 :active="anthology.current"
                 :label="item.name"
                 :list="item.values"
-                @change="
-                  (e) =>
-                    changeAnthology(e, {
-                      resetInitPlayerCurrentTime: true
-                    })
-                "
+                @change="onCurrentAnthologyChange"
               />
             </div>
           </el-tab-pane>
@@ -212,9 +210,16 @@ export default defineComponent({
         return total
       }, {})
     )
+    const anthologyCurrentList = computed(() => {
+      return (
+        anthology.list.find(
+          (item) => item.orgId === anthology.currentItem?.orgId
+        )?.values || []
+      )
+    })
 
     /**
-     *  修改选集
+     * 修改选集
      * @param item 选择集信息
      * @param option {
      *  isAddCache是否添加到播放缓存
@@ -393,6 +398,21 @@ export default defineComponent({
         duration: 3000
       })
     }
+    const onCurrentAnthologyChange = <
+      T extends { name: string; value: string }
+    >(
+      e: T
+    ) => {
+      changeAnthology(
+        {
+          orgId: anthology.currentItem?.orgId || '',
+          ...e
+        },
+        {
+          resetInitPlayerCurrentTime: true
+        }
+      )
+    }
 
     /** 销毁前预处理 */
     onBeforeUnmount(() => {
@@ -411,8 +431,10 @@ export default defineComponent({
       systemConfigStore,
       onFullscreen,
       changeAnthology,
+      onCurrentAnthologyChange,
       onVideoError,
-      nextAnthology
+      nextAnthology,
+      anthologyCurrentList
     }
   }
 })

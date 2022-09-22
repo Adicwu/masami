@@ -1,5 +1,5 @@
 <template>
-  <div class="aw-video__mask" @click="playHandler">
+  <div ref="maskEl" class="aw-video__mask">
     <Icon
       v-show="status === Type.PlayerStatus.Paused"
       class="aw-video__play"
@@ -25,36 +25,46 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, watch } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import LoadingBlockRun from '@comps/Loading/LoadingBlockRun.vue'
 import * as Type from './type'
 import type { NotifyItem } from './AwVideoMsg.vue'
+import useMixClick from '@/hooks/useMixClick'
 
 const props = withDefaults(
   defineProps<{
     status: Type.Player['status']
     src: string
     waiting: boolean
-    playHandler: (e: Event) => void
   }>(),
   {
     status: Type.PlayerStatus.None,
     src: '',
-    playHandler: () => false,
     waiting: false
   }
 )
-
 const emits = defineEmits<{
   (e: 'notify', item: NotifyItem): void
+  (e: 'click'): void
+  (e: 'dblclick'): void
 }>()
 
+const maskEl = ref<HTMLElement>()
 const loading: {
   visible: boolean
   timer: NodeJS.Timeout | null
 } = reactive({
   visible: false,
   timer: null
+})
+
+useMixClick(maskEl, {
+  click() {
+    emits('click')
+  },
+  dblclick() {
+    emits('dblclick')
+  }
 })
 
 watch(

@@ -13,9 +13,10 @@
     <AwVideoMask
       :status="player.status"
       :src="src"
-      :play-handler="playHandler"
       :waiting="requesting"
       @notify="notify"
+      @click="playHandler"
+      @dblclick="fullScreenCutover"
     />
     <div
       :class="controlBarClass"
@@ -87,12 +88,15 @@
           </li>
         </ul>
       </div> -->
+      <div class="control-select" @click="skipOp">
+        <span>跳过OP</span>
+      </div>
       <div
         v-click-outside="() => (playbackRate.visible = false)"
         class="control-select playback-rate"
       >
         <span @click="playbackRate.visible = !playbackRate.visible">
-          {{ playbackRate.current }}
+          {{ playbackRate.currentText }}
         </span>
         <ul v-show="playbackRate.visible">
           <li
@@ -104,6 +108,12 @@
             {{ item.name }}
           </li>
         </ul>
+      </div>
+      <div
+        v-show="player.webFullScreen || player.fullScreen"
+        class="control-select"
+      >
+        <span @click="episode.visible = !episode.visible">选集</span>
       </div>
       <el-tooltip effect="dark" content="快退15秒" placement="top-start">
         <Icon
@@ -163,6 +173,12 @@
       </el-tooltip>
     </div>
     <AwVideoMsg ref="awVideoMsgComp" />
+    <AwVideoEpisodes
+      v-model:visible="episode.visible"
+      :episodes="episodes"
+      :current-episode="currentEpisode"
+      @onChange="(e) => $emit('changeCurrentEpisode', e)"
+    />
     <VideoRender
       v-if="src"
       ref="videoInstance"
@@ -202,11 +218,12 @@ import {
   throttle,
   timeToS
 } from '@sorarain/utils'
-import { computed, reactive, ref, shallowReactive } from 'vue'
+import { computed, reactive, ref, shallowReactive, watch } from 'vue'
 
 import AwVideoMask from './AwVideoMask.vue'
 import AwVideoMsg, { NotifyItem } from './AwVideoMsg.vue'
 import AwVideoProgress from './AwVideoProgress.vue'
+import AwVideoEpisodes from './AwVideoEpisodes.vue'
 import VideoRender from './VideoRender.vue'
 
 import { getVideoScreenshot } from '@/utils/media'
@@ -231,7 +248,12 @@ const props = withDefaults(
      * 是否处于资源获取中，用于确定请求是否完成
      */
     requesting?: boolean
+    /**  */
     btnIcon?: string
+    /** 集数列表 */
+    episodes?: Type.Episode[]
+    /** 当前播放集 */
+    currentEpisode?: string
   }>(),
   {
     // quality: () => [
@@ -251,7 +273,9 @@ const props = withDefaults(
     muted: false,
     initCurrentTime: 0,
     requesting: false,
-    btnIcon: ''
+    btnIcon: '',
+    episodes: () => [],
+    currentEpisode: ''
   }
 )
 const emit = defineEmits<{
@@ -260,6 +284,8 @@ const emit = defineEmits<{
   (e: 'error'): void
   (e: 'next'): void
   (e: 'fullscreen', v: boolean): void
+  (e: 'selectEpisode', v: boolean): void
+  (e: 'changeCurrentEpisode', v: Type.Episode): void
 }>()
 
 const { PlayerStatus } = Type
@@ -293,6 +319,9 @@ const { playbackRate, changePlayBackRate } = (() => {
     visible: false,
     /** 当前倍数名称 */
     current: '1.0x',
+    get currentText() {
+      return this.current === '1.0x' ? '倍数' : this.current
+    },
     /** 倍数列表 */
     list: [
       {
@@ -427,6 +456,15 @@ const { controlBar, controlBarVisibleHandler, controlBarClass } = (() => {
     controlBarClass
   }
 })()
+/** 选集模块 */
+const { episode } = (() => {
+  const episode = shallowReactive({
+    visible: false
+  })
+  return {
+    episode
+  }
+})()
 // /** 画质切换模块 */
 // const qualityModule =
 //   (() => {
@@ -513,6 +551,8 @@ const webFullScreenCutover = () => {
     awVideoProgressComp.value?.initStyle()
   }, 1000)
 }
+/** 跳过op */
+const skipOp = () => fastProgressChange(90)
 
 /**
  * 消息提示
@@ -549,6 +589,11 @@ const lowerVolume = () => {
     newVol = 0
   }
   player.volume = newVol
+}
+
+const clear = () => {
+  player.currentTime = 0
+  player.duration = 0
 }
 
 /** 视频初始化钩子 */
@@ -672,6 +717,7 @@ const videoEvents = {
     }
   })
 })()
+watch(() => props.src, clear)
 
 defineExpose({
   clearNotify,

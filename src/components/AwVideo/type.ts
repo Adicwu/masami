@@ -49,3 +49,8 @@ export interface Quality {
   /** 画质key */
   value: string | number
 }
+
+export interface Episode {
+  name: string
+  value: string
+}
