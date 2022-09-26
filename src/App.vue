@@ -58,7 +58,7 @@ function live2dModule() {
   }
   onMounted(() => {
     live2dComp.value?.initLive2d({
-      model: '/live2dModels/koharu/koharu.model.json',
+      model: 'koharu/koharu.model.json',
       version: 2,
       size: {
         width: 210,

@@ -69,6 +69,9 @@ export default defineComponent({
         )
       )
     }
+    const getModelPath = (model: string) => {
+      return new URL(`./live2dModels/${model}`, import.meta.url).href
+    }
     /** live2d初始化 */
     const initLive2d = async ({
       model = '',
@@ -81,17 +84,20 @@ export default defineComponent({
     }: InitOption) => {
       try {
         await loadCDN()
-        await wait(1000)
+        await wait(3000)
+
         const PIXI = (window as any).PIXI
         if (!model || !PIXI) return console.log('依赖错误')
 
+        const modelPath = getModelPath(model)
         const app = new PIXI.Application({
           ...size,
           view: cvs.value,
           autoStart: true,
           transparent: true
         })
-        const live2DModel = await PIXI.live2d.Live2DModel.from(model)
+
+        const live2DModel = await PIXI.live2d.Live2DModel.from(modelPath)
         app.stage.addChild(live2DModel)
         live2DModel.scale.set(scale)
 
