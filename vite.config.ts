@@ -5,6 +5,7 @@ import viteCompression from 'vite-plugin-compression'
 import ElementPlus from 'unplugin-element-plus/vite'
 
 export default defineConfig({
+  assetsInclude: ['**/*.moc', '**/*.mtn'],
   plugins: [
     vue(),
     ElementPlus(),
@@ -57,7 +58,7 @@ export default defineConfig({
   },
   build: {
     terserOptions: {
-      // 生产环境下移除console
+      // 生产环境下移除console debugger
       compress: {
         drop_console: true,
         drop_debugger: true
