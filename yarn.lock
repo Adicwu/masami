@@ -126,24 +126,17 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@sorarain/use@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.npmjs.org/@sorarain/use/-/use-1.1.3.tgz#69d590c1027de28f467a786e33b56502a275e3d7"
-  integrity sha512-ZwCDVRbxd7uo/zBnoTVVjsCwxmwAnuy6yh2b+iUVNzqCCzZmMkPVJ4SGbvSix8YvP4SQyvNkygdtnvpErVexEA==
+"@sorarain/use@1.1.6":
+  version "1.1.6"
+  resolved "https://registry.npmjs.org/@sorarain/use/-/use-1.1.6.tgz#1a0b8ac034249ac5d62d0b592e18a23176e6e2af"
+  integrity sha512-8Jhb5Nx8OYmcwEDVBIZHRB5hlCEMAaO1790lTJniRatNVXwZ4aYsYkHlFeuudNSM9BYZejXppG2F7BoA3UVTKg==
   dependencies:
-    "@sorarain/utils" "workspace:^1.0.7"
+    "@sorarain/utils" "1.0.8"
 
-"@sorarain/use@workspace:^1.1.51":
-  version "1.1.51"
-  resolved "https://registry.npmjs.org/@sorarain/use/-/use-1.1.51.tgz#7609ab903de07e7446540e6246435b7f6db136c2"
-  integrity sha512-XTvsrRXqsHdk9tOrYRaGX5Z1KVV+zvslaU4/mYmTCLjCPIIxUq7dtH2Q4rqi+Ut36pKuxa0/2uxvoNmxWSZyhg==
-  dependencies:
-    "@sorarain/utils" "workspace:^1.0.7"
-
-"@sorarain/utils@^1.0.7", "@sorarain/utils@workspace:^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.npmjs.org/@sorarain/utils/-/utils-1.0.7.tgz#93fe53ddf2b25fd3de1acd905f9c8205965a60a3"
-  integrity sha512-+jVXGmiq4JLAZ1Swlg3GOF/Ra6OFfw6AXPDnBMV2ViU6zbx/2JYJocazKBmMb8fB0f1h/HeDBVlxR00IIQ/C9Q==
+"@sorarain/utils@1.0.8":
+  version "1.0.8"
+  resolved "https://registry.npmjs.org/@sorarain/utils/-/utils-1.0.8.tgz#8ba603aaa31ea82da9b85e9b5862e0a07dbf2d93"
+  integrity sha512-yF/2aDFQoJWGt+k3HlR9sjBaloc7HgUnvz5pOAc55X7cLH5SZmudu2IQuNUqfmp8B08BLgNTeQ89E2dRS7JWPg==
 
 "@types/json-schema@^7.0.9":
   version "7.0.11"
@@ -1941,13 +1934,13 @@ snake-case@^3.0.4:
     dot-case "^3.0.4"
     tslib "^2.0.3"
 
-sorarain@^0.5.65:
-  version "0.5.65"
-  resolved "https://registry.npmjs.org/sorarain/-/sorarain-0.5.65.tgz#cb5c5ddfe0ea7a7c9230ecff889e230f08e9505e"
-  integrity sha512-cwYetlmNaV8yicMPNcbU9aLNjbvAdiDYS1c/pSpTXoSDUIFEWxovLnKYYSyiU6mNXEaGQv5Ljtdznd5FrcKM8A==
+sorarain@^0.5.7:
+  version "0.5.7"
+  resolved "https://registry.npmjs.org/sorarain/-/sorarain-0.5.7.tgz#362e51172c104ba6c5b97010035a02df6e2a9181"
+  integrity sha512-wQkgr6+1W7m8/RcjLinffHGKTDaqQsRzfX9tcKYYqWEHrt/090YYJWoqdFKYUWdIBVwwa7jqniQgsSu7iqH30A==
   dependencies:
-    "@sorarain/use" "workspace:^1.1.51"
-    "@sorarain/utils" "workspace:^1.0.7"
+    "@sorarain/use" "1.1.6"
+    "@sorarain/utils" "1.0.8"
 
 source-map-js@^1.0.2:
   version "1.0.2"
