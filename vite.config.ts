@@ -57,13 +57,6 @@ export default defineConfig({
     }
   },
   build: {
-    terserOptions: {
-      // 生产环境下移除console debugger
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    },
     rollupOptions: {
       input: {
         index: path.resolve(__dirname, 'index.html'),
