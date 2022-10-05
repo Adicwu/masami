@@ -1,5 +1,6 @@
 import { jsonParse, arrChildSwap } from '@sorarain/utils'
 import { ref } from 'vue'
+import { StorageWatcherCling } from './storageWatcher.class'
 
 const COMIC_FAV_STORE_KEY = 'COMIC_FAV_STORE'
 
@@ -17,7 +18,10 @@ export type ComicFavItem = Comic & {
   favDate: number
 }
 
-class ComicFav {
+class ComicFav extends StorageWatcherCling {
+  constructor() {
+    super(COMIC_FAV_STORE_KEY)
+  }
   private fav_ = ref<ComicFavItem[]>([])
   public get fav() {
     return this.fav_.value

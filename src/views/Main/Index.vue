@@ -417,13 +417,14 @@ export default defineComponent({
         }
       )
     }
-
     /** 销毁前预处理 */
-    onBeforeUnmount(() => {
+    const saveStores = () => {
       saveProgressCache(anthology.currentItem)
       playProgressCache.saveStore()
       playHistoryCache.saveStore()
-    })
+    }
+
+    onBeforeUnmount(saveStores)
 
     return {
       ...comicInfoModuleArgs,
@@ -433,12 +434,13 @@ export default defineComponent({
       awVideoComp,
       initPlayerCurrentTime,
       systemConfigStore,
+      anthologyCurrentList,
       onFullscreen,
       changeAnthology,
       onCurrentAnthologyChange,
       onVideoError,
       nextAnthology,
-      anthologyCurrentList
+      saveStores
     }
   }
 })

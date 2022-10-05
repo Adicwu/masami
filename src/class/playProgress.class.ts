@@ -1,5 +1,6 @@
 import { jsonParse } from '@sorarain/utils'
 import { ref } from 'vue'
+import { StorageWatcherCling } from './storageWatcher.class'
 
 interface BaseCacheItem {
   /** 动漫id */
@@ -18,7 +19,10 @@ type CacheItem = BaseCacheItem & {
 
 const PLAY_PROGRESS_STORE_KEY = 'PLAY_PROGRESS_STORE'
 
-class PlayProgress {
+class PlayProgress extends StorageWatcherCling {
+  constructor() {
+    super(PLAY_PROGRESS_STORE_KEY)
+  }
   private cache_ = ref<CacheItem[]>([])
   public get cache() {
     return this.cache_.value

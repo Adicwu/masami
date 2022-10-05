@@ -1,5 +1,6 @@
 import { jsonParse } from '@sorarain/utils'
 import { ref } from 'vue'
+import { StorageWatcherCling } from './storageWatcher.class'
 
 interface CacheItem {
   id: number
@@ -13,7 +14,10 @@ const PLAY_HISTORY_STORE_KEY = 'PLAY_HISTORY_STORE'
 /**
  * 播放历史缓存
  */
-class PlayHistory {
+class PlayHistory extends StorageWatcherCling {
+  constructor() {
+    super(PLAY_HISTORY_STORE_KEY)
+  }
   /** 缓存列表 */
   private cache_ = ref<CacheItem[]>([])
 
