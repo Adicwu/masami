@@ -1,5 +1,4 @@
 module.exports = {
-  root: true,
   env: {
     node: true,
     es2021: true,
@@ -9,8 +8,8 @@ module.exports = {
   extends: [
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-    'prettier'
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended'
   ],
   parserOptions: {
     ecmaVersion: 12,
