@@ -12,6 +12,7 @@ import { elementPlusInit } from '@/plugins/elementPlus'
 import { createPreloadCdn } from '@/plugins/preloadCdn.class'
 import { createTheme } from '@/theme/theme.class'
 import { createVueInit } from '@/utils/vue/index'
+import { createComicMouseright } from '@/class/comicMouseright.class'
 
 const app = createApp(App)
 const pinia = createPinia()
@@ -22,6 +23,7 @@ createTheme()
 createPlayProgress().getStore()
 createPlayHistory().getStore()
 createComicFav().getStore()
+createComicMouseright()
 
 app.use(pinia).use(elementPlusInit).use(createVueInit).use(router)
 app.mount('#app')
