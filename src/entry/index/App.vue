@@ -32,9 +32,9 @@ import AppAsideBar from '@/layout/AppAsideBar.vue'
 import AppRouter from '@/layout/AppRouter.vue'
 import AppTabBar from '@/layout/AppTabBar.vue'
 
-import { WEB_NAME } from './common/static'
-import { useIsDev } from './hooks/utils'
-import { useSystemConfigStore } from './stores/systemConfig.store'
+import { WEB_NAME } from '@/common/static'
+import { useIsDev } from '@/hooks/utils'
+import { useSystemConfigStore } from '@/stores/systemConfig.store'
 import { useKoharu } from '@/stores/koharu.store'
 
 function provideModule() {

@@ -1,4 +1,4 @@
-import router from './index'
+import router from '@/entry/index/router'
 import { ComicSearchItem } from '@/api'
 
 export interface PixivMainParams {
@@ -76,4 +76,8 @@ export function toPixivPainter(id: string) {
       id
     }
   })
+}
+
+export function openNewMain(id: string) {
+  window.open(`${location.origin}/main.html#/${id}`)
 }

@@ -1,4 +1,4 @@
-import router from '@/router'
+import router from '@/entry/index/router'
 import { AxiosInstance } from 'axios'
 import { ElNotification } from 'element-plus'
 /**

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import { getServerIp } from '@/stores/systemConfig.store'
 import { ElNotification } from 'element-plus'
 import {
@@ -11,7 +11,7 @@ import { WEB_NAME } from '@/common/static'
  * 自动导入路由
  */
 function loadRoutes(): RouteRecordRaw[] {
-  const mods = import.meta.globEager('../views/*/route.ts')
+  const mods = import.meta.globEager('../../views/*/route.ts')
   return Object.values(mods).map((item) => item.default)
 }
 
@@ -28,7 +28,7 @@ const routes: RouteRecordRaw[] = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(),
   routes
 })
 
