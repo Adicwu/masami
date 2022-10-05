@@ -1,8 +1,8 @@
 <template>
-  <div class="comic-tv-card">
+  <div class="comic-tv-card" :data-comicid="detail.id">
     <BaseImg :src="detail.cover" />
     <div class="info">
-      <div class="info-play" @click="toComicMain(detail!.id)">
+      <div class="info-play" @click="toComicMain(detail.id)">
         <Icon name="play" />
       </div>
       <p>{{ detail.title }}</p>

@@ -1,12 +1,12 @@
 <template>
-  <div v-if="detail" class="home-section__card" :class="{ active }">
+  <div class="home-section__card" :class="{ active }" :data-comicid="detail.id">
     <div class="cover">
       <BaseImg :src="detail.cover" />
       <div class="cover-info">
         <b>{{ detail.title }}</b>
         <p>{{ detail.desc }}</p>
       </div>
-      <div class="cover-play" @click="toComicMain(detail!.id)">
+      <div class="cover-play" @click="toComicMain(detail.id)">
         <Icon name="play" />
       </div>
     </div>
@@ -16,33 +16,18 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from 'vue'
+<script lang="ts" setup>
 import { toComicMain } from '@/router/jump'
 
-export default defineComponent({
-  name: 'HomeSectionCard',
-  props: {
-    detail: {
-      type: Object as PropType<{
-        cover: string
-        id: string
-        title: string
-        desc: string
-      } | null>,
-      default: null
-    },
-    active: {
-      type: Boolean,
-      default: false
-    }
-  },
-  setup() {
-    return {
-      toComicMain
-    }
+defineProps<{
+  detail: {
+    cover: string
+    id: string
+    title: string
+    desc: string
   }
-})
+  active: boolean
+}>()
 </script>
 <style lang="less" scoped>
 .home-section__card {

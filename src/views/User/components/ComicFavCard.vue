@@ -3,6 +3,7 @@
     v-if="detail"
     class="comic-fav-card"
     :draggable="true"
+    :data-comicid="id"
     group-key="ComicFavCard"
     :self-key="id"
     @ex-change="posExchange"

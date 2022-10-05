@@ -7,6 +7,7 @@
         <li
           v-for="item in daysUpdate.current"
           :key="item.id"
+          :data-comicid="item.id"
           @click="toComicMain(item.id)"
         >
           <p>{{ item.title }}</p>

@@ -22,7 +22,12 @@
           placement="top"
         >
           <AwListModifyTransition class="play-history__content">
-            <CodepenCard v-for="item in list" :key="item.id" :detail="item">
+            <CodepenCard
+              v-for="item in list"
+              :key="item.id"
+              :detail="item"
+              :data-comicid="item.id"
+            >
               <template #cover>
                 <div class="cover-info">
                   <Icon

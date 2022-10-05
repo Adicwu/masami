@@ -16,6 +16,7 @@
               v-for="k in historyComics.slice(0, maxListShow)"
               :key="k.id"
               class="card"
+              :data-comicid="k.id"
               @click="toMain(k.id)"
             >
               <BaseImg :src="k.cover" />
@@ -40,6 +41,7 @@
               v-for="k in favComics.slice(0, maxListShow)"
               :key="k.comicId"
               class="card"
+              :data-comicid="k.comicId"
               @click="toMain(k.comicId)"
             >
               <BaseImg :src="k.comicCover" />

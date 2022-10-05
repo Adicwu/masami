@@ -1,5 +1,10 @@
 <template>
-  <div ref="selfEl" class="comic-card" @click="toComicMain(detail.id)">
+  <div
+    ref="selfEl"
+    :data-comicid="detail.id"
+    class="comic-card"
+    @click="toComicMain(detail.id)"
+  >
     <div class="cover">
       <BaseImg :src="detail.cover" />
     </div>

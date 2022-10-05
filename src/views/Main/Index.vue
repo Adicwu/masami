@@ -1,6 +1,6 @@
 <template>
   <div class="comic-main">
-    <div class="comic-main__break">
+    <div v-if="!spa" class="comic-main__break">
       <Icon name="arrow" @click="$router.go(-1)" />
     </div>
 
@@ -151,6 +151,10 @@ export default defineComponent({
     id: {
       type: [Number, String],
       default: -1
+    },
+    spa: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props) {

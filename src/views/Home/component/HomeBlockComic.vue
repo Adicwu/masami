@@ -20,6 +20,7 @@
         v-for="item in list"
         :key="item.id"
         class="card"
+        :data-comicid="item.id"
         @click="toComicMain(item.id)"
       >
         <BaseImg :src="item.cover" />
