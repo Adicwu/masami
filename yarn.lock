@@ -1934,10 +1934,10 @@ snake-case@^3.0.4:
     dot-case "^3.0.4"
     tslib "^2.0.3"
 
-sorarain@^0.5.7:
-  version "0.5.7"
-  resolved "https://registry.npmjs.org/sorarain/-/sorarain-0.5.7.tgz#362e51172c104ba6c5b97010035a02df6e2a9181"
-  integrity sha512-wQkgr6+1W7m8/RcjLinffHGKTDaqQsRzfX9tcKYYqWEHrt/090YYJWoqdFKYUWdIBVwwa7jqniQgsSu7iqH30A==
+sorarain@^0.5.71:
+  version "0.5.71"
+  resolved "https://registry.npmjs.org/sorarain/-/sorarain-0.5.71.tgz#a24bffb52405e149270012837c6632cdc2bea2f2"
+  integrity sha512-EuT2QJrBkbQpAZL/UtxjMaYOlFovDIe9rrqWzQCAh3QcfzGrRr6GgaqxIrHvR+AlRcuCUVZZ0NB97NjISNQiEw==
   dependencies:
     "@sorarain/use" "1.1.6"
     "@sorarain/utils" "1.0.8"

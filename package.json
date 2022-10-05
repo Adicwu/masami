@@ -12,7 +12,7 @@
     "element-plus": "^2.0.5",
     "moment": "^2.29.1",
     "pinia": "^2.0.9",
-    "sorarain": "^0.5.7",
+    "sorarain": "^0.5.71",
     "video.js": "^7.17.0",
     "vue": "^3.2.31",
     "vue-router": "4.1.2"
