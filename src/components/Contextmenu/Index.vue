@@ -10,6 +10,7 @@
         }
       "
     >
+      <Icon v-if="op.icon" :name="op.icon" />
       {{ op.text }}
     </li>
   </ul>
@@ -19,6 +20,7 @@
 import { useEventListener } from '@sorarain/use'
 import { computed, CSSProperties, reactive, ref } from 'vue'
 import * as Type from './type'
+import Icon from '@/components/Global/Icon.vue'
 
 const options = ref<Type.Option[]>([])
 const rect = reactive({
@@ -61,17 +63,31 @@ defineExpose({
   position: fixed;
   top: 0;
   left: 0;
-  background: var(--bg-color);
-  color: var(--font-color);
-  border-radius: 8px;
+  background: #fff;
+  color: #333;
+  border-radius: 4px;
   font-size: 14px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
   li {
+    @gap: 8px;
+    .font-format(28px);
+    display: flex;
+    align-items: center;
     cursor: pointer;
-    padding: 0 12px;
-    .font-format(36px);
-    opacity: 0.8;
+    padding: 0 8px;
+    margin: 4px;
+    border-radius: 2px;
+    transition: all 0.25s;
+    i {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+      padding-right: @gap;
+    }
     &:hover {
-      opacity: 1;
+      background: rgba(0, 0, 0, 0.1);
     }
   }
 }
