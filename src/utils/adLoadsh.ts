@@ -1,3 +1,5 @@
+import { ElNotification } from 'element-plus'
+
 /**
  * 对象自动赋值（两者需要相同的类型依赖）
  * @param a
@@ -31,4 +33,23 @@ export function eventThrottle<T extends unknown[]>(cb: (...args: T) => void) {
       bool = false
     })
   }
+}
+
+/**
+ * 将内容复制到粘贴板
+ * @param text
+ */
+export function copyText(text: string | number) {
+  const save = (e: ClipboardEvent) => {
+    e.clipboardData!.setData('text/plain', text.toString())
+    e.preventDefault()
+  }
+  document.addEventListener('copy', save)
+  document.execCommand('copy')
+  document.removeEventListener('copy', save)
+  ElNotification({
+    title: '内容复制',
+    message: '内容已经成功复制到粘贴板~',
+    type: 'success'
+  })
 }

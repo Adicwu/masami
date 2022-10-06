@@ -78,6 +78,10 @@ export function toPixivPainter(id: string) {
   })
 }
 
+export function createNewMainPath(id: string) {
+  return `${location.origin}/main.html#/${id}`
+}
+
 export function openNewMain(id: string) {
-  window.open(`${location.origin}/main.html#/${id}`)
+  window.open(createNewMainPath(id))
 }
