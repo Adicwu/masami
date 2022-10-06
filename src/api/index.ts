@@ -95,10 +95,18 @@ export async function getComicMain(
     const {
       data: { data }
     } = await getax<ApiType.GetAnime>(`api/getAnime/${id}`)
-    const playlist = getVal(() => data.playlist[0], []).map((item, index) => ({
-      name: String(item.title),
-      value: index
-    }))
+
+    const playlist = new Map()
+    Object.entries(data.playlist || {}).forEach(([k, v]) => {
+      playlist.set(
+        k,
+        v.map((item, index) => ({
+          name: String(item.title),
+          value: index
+        }))
+      )
+    })
+
     return {
       playlist,
       title: data.title,

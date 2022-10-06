@@ -98,7 +98,7 @@ function comicInfoModule(comicId: Ref<ComicId>, init: () => void) {
     cover: '',
     voiceActors: [],
     cates: [],
-    playlist: []
+    playlist: new Map()
   })
   /** 动漫地址集 */
   const comicUrls = ref<Api.GetVideoUrlReturn>([])
@@ -193,14 +193,17 @@ export default defineComponent({
       currentItem: null,
       bads: [],
       get list() {
-        return comicUrls.value.map((item) => ({
-          name: `播放源(${item.key})`,
-          orgId: item.key,
-          values: item.value.map((url, index) => ({
-            name: getVal(() => comic.playlist[index].name, '未知'),
-            value: url
-          }))
-        }))
+        return comicUrls.value.map((item) => {
+          const playlist = comic.playlist.get(item.key)
+          return {
+            name: `播放源(${item.key})`,
+            orgId: item.key,
+            values: item.value.map((url, index) => ({
+              name: playlist?.[index]?.name || '未知',
+              value: url
+            }))
+          }
+        })
       }
     })
     /** 播放器初始化进度 */

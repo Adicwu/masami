@@ -41,12 +41,15 @@ export interface GetComicMainReturn {
   //   }[]
   // }[]
   /** 播放列表 */
-  playlist: {
-    /** 名称 */
-    name: string
-    /** 值 */
-    value: number
-  }[]
+  playlist: Map<
+    string,
+    {
+      /** 名称 */
+      name: string
+      /** 值 */
+      value: number
+    }[]
+  >
   /** 名称 */
   title: string
   /** 集数状态 */
