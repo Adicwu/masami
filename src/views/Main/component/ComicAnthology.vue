@@ -28,7 +28,7 @@
       </el-select>
     </div>
 
-    <ul class="comic-anthology__list">
+    <AwListModifyTransition tag="ul" class="comic-anthology__list">
       <li
         v-for="{ name, value } in realList"
         :key="value"
@@ -37,12 +37,13 @@
       >
         {{ name }}
       </li>
-    </ul>
+    </AwListModifyTransition>
   </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, PropType, ref } from 'vue'
+import { AwListModifyTransition } from 'sorarain'
 import { arrAvgSplit } from '@sorarain/utils'
 
 import { videoUrlFormat } from '@/api/utils'
@@ -57,6 +58,9 @@ export type ChangeReturns = Option & {
 
 export default defineComponent({
   name: 'ComicAnthology',
+  components: {
+    AwListModifyTransition
+  },
   props: {
     label: {
       type: String,
