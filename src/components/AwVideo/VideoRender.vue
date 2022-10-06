@@ -157,7 +157,7 @@ export default defineComponent({
       (videoEl.value!.playbackRate = rate)
     /** 修改当前播放进度 */
     const setCurrentTime = (currentTime: number) =>
-      (videoEl.value!.currentTime = currentTime)
+      (videoEl.value!.currentTime = +currentTime.toFixed(4))
     /** 播放 */
     const play = () => videoInstance.value?.play()
     /** 暂停 */
