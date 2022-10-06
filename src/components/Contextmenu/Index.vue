@@ -50,6 +50,11 @@ const close = () => {
 }
 
 useEventListener('mousewheel', close)
+useEventListener('mouseup', (e) => {
+  if ((e as MouseEvent).button === 2) {
+    close()
+  }
+})
 useEventListener('click', close, {
   target: document.getElementById('app')!
 })

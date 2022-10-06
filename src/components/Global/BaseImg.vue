@@ -4,10 +4,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { loadImg } from '@/utils/media'
-import { useDomObserver } from '@/hooks/utils'
 import { BASE_IMG } from '@/common/static'
+import { useDomObserver } from '@/hooks/utils'
+import { loadImg } from '@/utils/media'
+import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   name: 'BaseImg',
@@ -30,9 +30,12 @@ export default defineComponent({
       await loadImg(props.src)
       loaded.value = true
     }
-    if (!props.lazy) load()
 
-    useDomObserver(fakeImgEl, load)
+    if (props.lazy) {
+      useDomObserver(fakeImgEl, load)
+    } else {
+      load()
+    }
 
     return {
       loaded,
