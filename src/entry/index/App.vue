@@ -36,6 +36,7 @@ import { WEB_NAME } from '@/common/static'
 import { useIsDev } from '@/hooks/utils'
 import { useSystemConfigStore } from '@/stores/systemConfig.store'
 import { useKoharu } from '@/stores/koharu.store'
+import { AwDailog } from '@/components/AwDailog'
 
 function provideModule() {
   const { isDev } = useIsDev()
@@ -72,6 +73,17 @@ function live2dModule() {
     koharu
   }
 }
+function initModule() {
+  const KEY = 'ENTRY_TIME'
+  const entryTime = localStorage.getItem(KEY)
+  if (!entryTime) {
+    AwDailog({
+      title: '温馨提示',
+      content: '此站部分内容不适合全年龄段，请勿在他人陪同下使用！'
+    })
+    localStorage.setItem(KEY, new Date().getTime().toString())
+  }
+}
 
 export default defineComponent({
   name: 'Comic',
@@ -84,6 +96,7 @@ export default defineComponent({
   setup() {
     const systemConfigStore = useSystemConfigStore()
     systemConfigStore.init()
+    initModule()
     return {
       WEB_NAME,
       ...asideModule(),
