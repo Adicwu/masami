@@ -15,53 +15,45 @@
         :name="modelValue !== '' ? 'delete1' : 'iconsearch'"
         @click="clearValue"
       />
-      <transition
-        enter-active-class="animate__fadeInDown"
-        leave-active-class="animate__fadeOutUp"
+
+      <div
+        :class="{ active: state.using && props.hots.length > 0 }"
+        class="search-input__history"
       >
-        <div
-          v-show="state.using && props.hots.length > 0"
-          class="search-input__history"
-        >
-          <div class="title">热门关键词</div>
-          <ul class="list">
-            <li
-              v-for="(item, index) in props.hots"
-              :key="index"
-              @click="changeHistory(item)"
-            >
-              {{ item }}
-            </li>
-          </ul>
-        </div>
-      </transition>
-      <transition
-        enter-active-class="animate__fadeInDown"
-        leave-active-class="animate__fadeOutUp"
+        <div class="title">热门关键词</div>
+        <ul class="list">
+          <li
+            v-for="(item, index) in props.hots"
+            :key="index"
+            @click="changeHistory(item)"
+          >
+            {{ item }}
+          </li>
+        </ul>
+      </div>
+
+      <div
+        :class="{ active: state.using && props.history.length > 0 }"
+        class="search-input__history"
       >
-        <div
-          v-show="state.using && props.history.length > 0"
-          class="search-input__history"
-        >
-          <div class="title">
-            搜索记录
-            <Icon name="delete" @click="$emit('clearHistory')" />
-          </div>
-          <AwListModifyTransition tag="ul" class="list">
-            <li
-              v-for="item in props.history"
-              :key="item.date"
-              @click="changeHistory(item.value)"
-            >
-              {{ item.value }}
-              <Icon
-                name="delete2"
-                @click.stop="$emit('deleteHistory', item.value)"
-              />
-            </li>
-          </AwListModifyTransition>
+        <div class="title">
+          搜索记录
+          <Icon name="delete" @click="$emit('clearHistory')" />
         </div>
-      </transition>
+        <AwListModifyTransition tag="ul" class="list">
+          <li
+            v-for="item in props.history"
+            :key="item.date"
+            @click="changeHistory(item.value)"
+          >
+            {{ item.value }}
+            <Icon
+              name="delete2"
+              @click.stop="$emit('deleteHistory', item.value)"
+            />
+          </li>
+        </AwListModifyTransition>
+      </div>
     </div>
     <slot />
   </header>
@@ -202,15 +194,19 @@ const clearValue = () => {
     position: absolute;
     top: calc(100% + 20px);
     width: 100%;
-    padding: 20px;
     box-sizing: border-box;
     background: var(--aside-bg-color);
     border-radius: @radius;
     box-shadow: 0 0 14px rgba(0, 0, 0, 0.2);
     user-select: none;
-    animation-duration: 0.25s;
+    max-height: 0;
+    transition: all 0.25s;
+    overflow: auto;
+    &.active {
+      max-height: 220px;
+      padding: 20px;
+    }
 
-    // animation-delay: 1s;
     .title {
       color: var(--font-unactive-color);
       font-weight: 700;
