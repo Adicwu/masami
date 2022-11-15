@@ -55,7 +55,12 @@
       </el-timeline>
     </template>
 
-    <EmptyImgBlock v-show="!hasList" content="无聊如你" height="60%">
+    <EmptyImgBlock
+      v-if="!hasList"
+      class="play-history__empty"
+      content="无聊如你"
+      height="60%"
+    >
       <img src="~static/img/history-empty.png" style="width: 100%" />
     </EmptyImgBlock>
 
@@ -221,6 +226,12 @@ export default defineComponent({
 
   &__timeline {
     margin-top: 20px;
+  }
+
+  &__empty {
+    margin: 0 auto;
+    margin-top: 100px;
+    position: relative;
   }
 }
 </style>

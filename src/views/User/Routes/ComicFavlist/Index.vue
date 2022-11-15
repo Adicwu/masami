@@ -1,6 +1,9 @@
 <template>
   <div class="comic-favlist">
-    <AwListModifyTransition v-if="favs.length > 0" class="comic-favlist__content">
+    <AwListModifyTransition
+      v-if="favs.length > 0"
+      class="comic-favlist__content"
+    >
       <ComicFavCard
         v-for="comic in favs"
         :id="comic.comicId"
@@ -11,7 +14,7 @@
     <EmptyImgBlock
       v-else
       class="comic-favlist__empty"
-      content="啥也没有"
+      content="冷酷无情啊！"
       width="400px"
       height="max-content"
     >
@@ -51,8 +54,6 @@ export default defineComponent({
 </script>
 <style lang="less" scoped>
 .comic-favlist {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   height: 100%;
   padding: 30px;

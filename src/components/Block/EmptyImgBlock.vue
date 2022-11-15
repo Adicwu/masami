@@ -35,16 +35,14 @@ export default defineComponent({
   left: 0;
   width: v-bind(width);
   height: v-bind(height);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  text-align: center;
   &::after {
     .mask;
   }
   &__inner {
     width: 300px;
     overflow: hidden;
+    display: inline-block;
   }
 
   p {
