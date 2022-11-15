@@ -62,7 +62,7 @@
         enter-active-class="animate__fadeIn"
         leave-active-class="animate__fadeOut"
       >
-        <div v-show="isSearchFetching" class="search-main__loading">
+        <div v-show="isSearchWaiting" class="search-main__loading">
           <LoadingCodeRun text="电波获取中，请稍后" />
         </div>
       </transition>
@@ -96,7 +96,7 @@
 </template>
 
 <script lang="ts">
-import { getVal, wait } from '@sorarain/utils'
+import { getVal } from '@sorarain/utils'
 import { computed, defineComponent, reactive, ref, shallowReactive } from 'vue'
 
 import SearchHeader from '@/components/Form/SearchHeader.vue'
@@ -106,9 +106,8 @@ import LoadingCodeRun from '@comps/Loading/LoadingCodeRun.vue'
 import ComicCard from './component/ComicCard.vue'
 
 import * as Api from '@/api'
-import { usePageOut } from '@/hooks/utils'
+import { useLongtimePendingRef, usePageOut } from '@/hooks/utils'
 import { useSearchHistory } from '@/stores/searchHistory.store'
-import { ElNotification } from 'element-plus'
 import { SEARCH_FILTER } from './statics/form'
 
 /**
@@ -213,12 +212,13 @@ export default defineComponent({
     const searchResult = ref<Api.ComicPageList[]>([])
     const searchHistory = useSearchHistory()
 
-    /** 搜索延迟等待时间 */
-    const FETCH_WAIT_TIME = 500
     /** 是否在搜索请求中 */
     const isSearchFetching = ref(false)
     /** 是否为空搜索结果 */
     const isEmptySearch = ref(false)
+    const isSearchWaiting = useLongtimePendingRef(isSearchFetching, {
+      initPending: true
+    })
     const {
       filter,
       pager,
@@ -235,11 +235,6 @@ export default defineComponent({
     const setSearchResult = (data: Api.ComicPageList[]) => {
       if (data.length === 0) {
         isEmptySearch.value = true
-        ElNotification({
-          type: 'error',
-          title: '搜索',
-          message: '未找到相关动漫'
-        })
       }
       searchResult.value = data
     }
@@ -259,7 +254,6 @@ export default defineComponent({
         name: filter.name,
         page: pager.currnet - 1
       })
-      await wait(FETCH_WAIT_TIME)
       pager.total = total
       setSearchResult(data)
       isSearchFetching.value = false
@@ -281,7 +275,6 @@ export default defineComponent({
         year: filter.year,
         letter: filter.letter
       })
-      await wait(FETCH_WAIT_TIME)
       pager.total = total
       setSearchResult(data)
       isSearchFetching.value = false
@@ -299,10 +292,10 @@ export default defineComponent({
       searchMainEl,
       filter,
       pager,
-      isSearchFetching,
       filterVisible,
       searchResult,
       hasSearchKey,
+      isSearchWaiting,
       searchByFilter,
       searchByName,
       resetName,
@@ -372,6 +365,10 @@ export default defineComponent({
         background: var(--box-bg-color);
         animation-duration: 0.5s;
       }
+
+      // ::v-deep(.empty-img-block__inner) {
+      //   aspect-ratio: 1/1;
+      // }
     }
 
     &-page {

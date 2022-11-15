@@ -2,7 +2,6 @@ import { domObserver } from '@/utils/dom'
 import { useEventListener } from '@sorarain/use'
 import {
   customRef,
-  getCurrentInstance,
   inject,
   InjectionKey,
   isRef,
@@ -13,9 +12,11 @@ import {
   onMounted,
   onUnmounted,
   provide,
+  reactive,
   Ref,
   ref,
-  unref
+  unref,
+  watch
 } from 'vue'
 
 /**
@@ -148,14 +149,12 @@ export function useIsDev() {
   }
 }
 
-// expose public api
-export function useExpose<T = Record<string, any>>(apis: T) {
-  const instance = getCurrentInstance() as any
-  if (instance) {
-    Object.assign(instance.proxy, apis)
-  }
-}
-
+/**
+ * 防抖ref
+ * @param value
+ * @param delay
+ * @returns
+ */
 export function useDebouncedRef<T>(value: T, delay = 200) {
   let timeout: NodeJS.Timeout | null = null
   return customRef((track, trigger) => {
@@ -173,4 +172,70 @@ export function useDebouncedRef<T>(value: T, delay = 200) {
       }
     }
   })
+}
+
+/**
+ * 请求长等待ref
+ * @param isPending 判断请求是否在等待中的ref
+ * @param param
+ *  limittime 长等待时长
+ *  initPending 初始化ref值
+ *  timeout 超时时长
+ *  onTimeout 超时回调
+ *  onFulled 请求完成回调
+ *  onPending 长等待中回调
+ * @returns
+ */
+export function useLongtimePendingRef(
+  isPending: Ref<boolean>,
+  {
+    limittime = 2000,
+    timeout = 8000,
+    initPending = false,
+    onPending = () => {},
+    onFulled = () => {},
+    onTimeout = () => {}
+  } = {}
+) {
+  const flag = ref(initPending)
+  const state = reactive({
+    timer: null as NodeJS.Timer | null,
+    value: 0
+  })
+
+  const reset = () => {
+    state.value = 0
+    if (state.timer) {
+      clearInterval(state.timer)
+      state.timer = null
+    }
+  }
+
+  watch(
+    isPending,
+    (pending) => {
+      if (pending) {
+        state.timer = setInterval(() => {
+          state.value++
+          const time = state.value * 1000
+          if (time > limittime || time > timeout) {
+            flag.value = true
+            nextTick(onPending)
+            reset()
+          }
+          if (time > timeout) {
+            nextTick(onTimeout)
+          }
+        }, 1000)
+      } else {
+        flag.value = false
+        nextTick(onFulled)
+        reset()
+      }
+    },
+    {
+      immediate: true
+    }
+  )
+  return flag
 }

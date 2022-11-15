@@ -10,7 +10,7 @@
     enter-active-class="animate__fadeIn"
     leave-active-class="animate__fadeOut"
   >
-    <div v-show="loading.visible || waiting" class="aw-video__loading">
+    <div v-show="loading || waiting" class="aw-video__loading">
       <LoadingBlockRun />
     </div>
   </transition>
@@ -25,11 +25,12 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref, watch } from 'vue'
-import LoadingBlockRun from '@comps/Loading/LoadingBlockRun.vue'
-import * as Type from './type'
-import type { NotifyItem } from './AwVideoMsg.vue'
 import useMixClick from '@/hooks/useMixClick'
+import { useLongtimePendingRef } from '@/hooks/utils'
+import LoadingBlockRun from '@comps/Loading/LoadingBlockRun.vue'
+import { computed, ref } from 'vue'
+import type { NotifyItem } from './AwVideoMsg.vue'
+import * as Type from './type'
 
 const props = withDefaults(
   defineProps<{
@@ -50,13 +51,25 @@ const emits = defineEmits<{
 }>()
 
 const maskEl = ref<HTMLElement>()
-const loading: {
-  visible: boolean
-  timer: NodeJS.Timeout | null
-} = reactive({
-  visible: false,
-  timer: null
-})
+
+const loading = useLongtimePendingRef(
+  computed(() => props.status === Type.PlayerStatus.Loading),
+  {
+    initPending: true,
+    onPending() {
+      emits('notify', {
+        content: '电波获取中，请稍后~',
+        duration: 3000
+      })
+    },
+    onFulled() {
+      emits('notify', {
+        content: '电波获取完成~',
+        duration: 3000
+      })
+    }
+  }
+)
 
 useMixClick(maskEl, {
   click() {
@@ -66,33 +79,6 @@ useMixClick(maskEl, {
     emits('dblclick')
   }
 })
-
-watch(
-  () => props.status,
-  (status) => {
-    if (status === Type.PlayerStatus.Loading) {
-      loading.timer = setTimeout(() => {
-        loading.visible = true
-        emits('notify', {
-          content: '电波获取中，请稍后~',
-          duration: 3000
-        })
-      }, 2000)
-    } else {
-      if (loading.timer) {
-        clearTimeout(loading.timer)
-        loading.timer = null
-      }
-      if (loading.visible) {
-        loading.visible = false
-        emits('notify', {
-          content: '电波获取完成~',
-          duration: 3000
-        })
-      }
-    }
-  }
-)
 </script>
 <style lang="less" scoped>
 .aw-video {
