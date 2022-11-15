@@ -5,10 +5,9 @@
 </template>
 
 <script lang="ts">
+import { moveable } from '@sorarain/use'
 import { computed, CSSProperties, defineComponent, reactive, ref } from 'vue'
 import { LIVE2D_CDNS } from './static'
-import { moveable } from '@sorarain/use'
-import { wait } from '@sorarain/utils'
 
 /** 初始化参数 */
 export interface InitOption {
@@ -55,7 +54,7 @@ export default defineComponent({
 
     /** 依赖加载 */
     const loadCDN = async () => {
-      return Promise.all(
+      await Promise.all(
         LIVE2D_CDNS.map(
           ({ link }) =>
             new Promise((resolve, reject) => {
@@ -84,7 +83,6 @@ export default defineComponent({
     }: InitOption) => {
       try {
         await loadCDN()
-        await wait(3000)
 
         const PIXI = (window as any).PIXI
         if (!model || !PIXI) return console.log('依赖错误')
