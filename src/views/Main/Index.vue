@@ -165,10 +165,10 @@ export default defineComponent({
     const koharu = useKoharu()
 
     const routeParam = computed(() => ({
-      episode: Number(route?.query.episode) || -1,
-      progress: Number(route?.query.progress) || -1,
-      orgId: String(route?.query.orgId) || '',
-      latest: !!Number(route?.query.latest)
+      episode: Number(route.query?.episode) || -1,
+      progress: Number(route.query?.progress) || -1,
+      orgId: String(route.query?.orgId) || '',
+      latest: !!Number(route.query?.latest)
     }))
 
     const { comic, comicUrls, ...comicInfoModuleArgs } = comicInfoModule(

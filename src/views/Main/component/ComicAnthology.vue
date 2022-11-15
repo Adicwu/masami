@@ -132,6 +132,7 @@ export default defineComponent({
   margin-bottom: 16px;
 
   &__list {
+    position: relative;
     display: flex;
     width: 100%;
     flex-wrap: wrap;
