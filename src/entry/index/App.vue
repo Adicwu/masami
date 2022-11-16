@@ -14,11 +14,11 @@
       <AppRouter />
     </main>
 
-    <!-- <Live2d
+    <Live2d
       ref="live2dComp"
       v-model:visible="koharu.visible"
       @click="live2dAction"
-    /> -->
+    />
   </div>
 </template>
 
@@ -57,7 +57,6 @@ function live2dModule() {
   const live2dAction = () => {
     live2dComp.value?.motion('else')
   }
-  // todo 生产环境有问题
   onMounted(() => {
     requestIdleCallback(() => {
       live2dComp.value?.initLive2d({
@@ -103,8 +102,8 @@ export default defineComponent({
     return {
       WEB_NAME,
       ...asideModule(),
-      ...provideModule()
-      // ...live2dModule()
+      ...provideModule(),
+      ...live2dModule()
     }
   }
 })
