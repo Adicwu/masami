@@ -5,13 +5,13 @@ export const LIVE2D_CDNS = [
     rel: 'javascript'
   },
   {
-    name: 'pixi',
-    link: 'https://cdn.bootcdn.net/ajax/libs/pixi.js/6.0.4/browser/pixi.min.js',
+    name: 'live2d',
+    link: 'https://api.adicw.cn/static/live2d/live2d.min.js',
     rel: 'javascript'
   },
   {
-    name: 'live2d',
-    link: 'https://api.adicw.cn/static/live2d/live2d.min.js',
+    name: 'pixi',
+    link: 'https://cdn.bootcdn.net/ajax/libs/pixi.js/6.0.4/browser/pixi.min.js',
     rel: 'javascript'
   },
   {

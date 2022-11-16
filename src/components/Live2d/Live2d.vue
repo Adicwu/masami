@@ -52,20 +52,23 @@ export default defineComponent({
       zIndex: !props.visible ? -1 : 4444
     }))
 
+    const creatCDN = (link: string) =>
+      new Promise((resolve, reject) => {
+        const el = document.createElement('script')
+        el.src = link
+        el.type = 'text/javascript'
+        document.body.appendChild(el)
+        el.onload = resolve
+        el.onerror = reject
+      })
+
     /** 依赖加载 */
     const loadCDN = async () => {
       await Promise.all(
-        LIVE2D_CDNS.map(
-          ({ link }) =>
-            new Promise((resolve, reject) => {
-              const el = document.createElement('script')
-              el.src = link
-              el.type = 'text/javascript'
-              document.body.appendChild(el)
-              el.onload = resolve
-              el.onerror = reject
-            })
-        )
+        LIVE2D_CDNS.slice(0, 3).map(({ link }) => creatCDN(link))
+      )
+      await Promise.all(
+        LIVE2D_CDNS.slice(3, 4).map(({ link }) => creatCDN(link))
       )
     }
     const getModelPath = (model: string) => {
