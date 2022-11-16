@@ -72,7 +72,8 @@ export default defineComponent({
       )
     }
     const getModelPath = (model: string) => {
-      return new URL(`./live2dModels/${model}`, import.meta.url).href
+      // return new URL(`./live2dModels/${model}`, import.meta.url).href
+      return `https://api.adicw.cn/static/live2dModels/${model}`
     }
     /** live2d初始化 */
     const initLive2d = async ({
