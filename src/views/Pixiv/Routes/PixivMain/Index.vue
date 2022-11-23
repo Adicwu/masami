@@ -27,11 +27,13 @@
             ref="plateImgEl"
             :src="pixivImgMainList.first"
             @load="onPlateImgLoad"
+            @click="preview(pixivImgMainList.first)"
           />
           <BaseImg
             v-for="(src, index) in pixivImgMainList.others"
             :key="index"
             :src="src"
+            @click="preview(src)"
           />
           <ul>
             <li v-for="(item, index) in pixivImgMain.tags" :key="index">
@@ -61,6 +63,7 @@
 
 <script lang="ts">
 import { getVilipixPicMain } from '@/api'
+import { ImagePreview } from '@/components/AwImagePreview/ImagePreview'
 import { PixivMainParams, toPixivPainter } from '@/router/jump'
 import * as Api from '@apis/index'
 import { jsonParse } from '@sorarain/utils'
@@ -257,6 +260,14 @@ export default defineComponent({
       toPixivPainter(pixivImgMain.author.id)
     }
 
+    const preview = (path?: string) => {
+      if (!path) return
+      ImagePreview({
+        current: path,
+        images: pixivImgMain.orgImgs
+      })
+    }
+
     onActivated(() => {
       fetchpixivImgMain()
     })
@@ -270,6 +281,7 @@ export default defineComponent({
       pixivImgMain,
       pixivImgMainList,
       toPainter,
+      preview,
       ...animateModule()
     }
   }
@@ -372,6 +384,7 @@ export default defineComponent({
       img {
         display: block;
         width: 100%;
+        cursor: zoom-in;
       }
 
       ul {

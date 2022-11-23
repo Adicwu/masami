@@ -32,7 +32,7 @@
       <AwSearchLoading :pending="state.searchPending">
         <AwVirtualWaterfall
           target=".pixiv-content"
-          :column="5"
+          :column="6"
           :request-size="state.requestSize"
           :request="fetchPixiv"
           @onNoMoreResult="onNoMoreResult"

@@ -67,6 +67,7 @@
         </div>
       </transition>
       <EmptyImgBlock
+        class="search-main__empty"
         v-show="isEmptySearch"
         content="什么信息都没找到，甚至还白嫖了顿饭~"
         height="60%"
@@ -364,6 +365,10 @@ export default defineComponent({
         z-index: 4;
         background: var(--box-bg-color);
         animation-duration: 0.5s;
+      }
+
+      &__empty {
+        margin-top: 40px;
       }
 
       // ::v-deep(.empty-img-block__inner) {

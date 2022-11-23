@@ -2,8 +2,7 @@
   <div class="pixiv-grid-booth">
     <div ref="contentEl" class="content">
       <div v-for="item in page.current" :key="item.id" class="content-item">
-        <!-- :style="computImgStyle(item.w, item.h)" -->
-        <img :src="item.cover" />
+        <img :src="item.cover" @click="toMain(item)" />
       </div>
     </div>
     <div v-if="page.total > props.size" class="pager">
@@ -19,9 +18,9 @@
 </template>
 
 <script lang="ts" setup>
-import { CSSProperties, onMounted, reactive, ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
-// const emit = defineEmits<{}>()
 interface Pixiv {
   cover: string
   id: string
@@ -47,6 +46,7 @@ const props = withDefaults(
   }
 )
 const contentEl = ref<HTMLElement>()
+const router = useRouter()
 
 const page = reactive({
   pending: false,
@@ -55,10 +55,6 @@ const page = reactive({
   total: 0
 })
 
-// const itemStyles = reactive({
-//   height: 0
-// })
-
 const fetchData = async () => {
   page.pending = true
   const { list, total } = await props.request(page.tpage, props.size)
@@ -66,26 +62,22 @@ const fetchData = async () => {
   page.current = list
   page.pending = false
 }
-// const styleInit = () => {
-//   itemStyles.height =
-//     (contentEl.value?.childNodes[1] as HTMLElement | null)?.clientHeight || 0
-//   console.log(itemStyles.height)
-// }
-// const computImgStyle = (w: number, h: number): CSSProperties => {
-//   return {
-//     width: `${(w / h) * itemStyles.height}px`,
-//     height: `${itemStyles.height}px`
-//   }
-// }
 const reset = () => {
   page.current = []
   page.total = 0
   page.tpage = 1
 }
+const toMain = (item: Pixiv) => {
+  router.push({
+    name: 'PixivMain',
+    params: {
+      id: item.id
+    }
+  })
+}
 
 onMounted(async () => {
   await fetchData()
-  // styleInit()
 })
 
 defineExpose({
@@ -120,6 +112,7 @@ defineExpose({
         width: 100%;
         height: 100%;
         border-radius: var(--df-radius);
+        cursor: zoom-in;
       }
     }
   }
@@ -136,6 +129,10 @@ defineExpose({
         background: unset;
         border-radius: 50%;
         color: var(--font-color);
+      }
+
+      .is-active {
+        color: var(--warning-color);
       }
 
       .el-pager {
