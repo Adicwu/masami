@@ -225,6 +225,8 @@ export interface VilipixSearch {
   }
 }
 
+export type VilipixOrg = ApiFormat<string[]>
+
 export interface VilipixRank {
   data: {
     /** 结果 */

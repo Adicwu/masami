@@ -1,4 +1,4 @@
-import { dfGetax } from '@/common/request/index'
+import { dfGetax, getax } from '@/common/request/index'
 import * as FnReturns from './type'
 import * as ApiReturns from './api.type'
 import { getVal } from '@sorarain/utils'
@@ -97,11 +97,17 @@ export async function getVilipixPicMain(
   id: string
 ): Promise<FnReturns.VilipixPicMain | null> {
   try {
-    const { data } = await dfGetax<ApiReturns.VilipixIllust>(
-      `${BaseUrl}/illust/${id}`
-    )
+    const [
+      { data },
+      {
+        data: { data: orgImgs = [] }
+      }
+    ] = await Promise.all([
+      dfGetax<ApiReturns.VilipixIllust>(`${BaseUrl}/illust/${id}`),
+      getax<ApiReturns.VilipixOrg>(`api/vilipix/${id}`)
+    ])
     return {
-      orgImgs: data.imgs,
+      orgImgs,
       author: {
         id: data.authorId,
         avatar: data.authorAvatar,
