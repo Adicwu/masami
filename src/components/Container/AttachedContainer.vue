@@ -95,14 +95,14 @@ export default defineComponent({
       selfRealFatherEl.value = selfEl.value!.parentNode as HTMLElement
       if (selfRealFatherEl.value) {
         selfRealFatherEl.value!.addEventListener('mouseover', onMouseEnter)
-        selfRealFatherEl.value!.addEventListener('mouseleave', onMouseOut)
+        selfRealFatherEl.value!.addEventListener('mouseout', onMouseOut)
         selfRealFatherEl.value!.addEventListener('click', onMouseOut)
       }
     })
     onBeforeUnmount(() => {
       if (selfRealFatherEl.value) {
         selfRealFatherEl.value!.removeEventListener('mouseover', onMouseEnter)
-        selfRealFatherEl.value!.removeEventListener('mouseleave', onMouseOut)
+        selfRealFatherEl.value!.removeEventListener('mouseout', onMouseOut)
         selfRealFatherEl.value!.removeEventListener('click', onMouseOut)
       }
     })

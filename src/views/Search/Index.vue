@@ -245,6 +245,7 @@ export default defineComponent({
      */
     const searchByName = async (clear = true) => {
       if (!filter.name) return
+      searchResult.value.splice(0)
       filterVisible.value = false
       isSearchFetching.value = true
       isEmptySearch.value = false
@@ -264,6 +265,7 @@ export default defineComponent({
      * @param clear 是否清空历史
      */
     const searchByFilter = async (clear = true) => {
+      searchResult.value.splice(0)
       isSearchFetching.value = true
       isEmptySearch.value = false
       searchMainEl.value!.scrollTop = 0
