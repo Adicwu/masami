@@ -8,6 +8,16 @@
 
 ---
 
+## Build
+
+It is recommended to use `yarn` or `pnpm`,Take `yarn` as an example:
+
+```bash
+yarn            # install
+yarn run dev    # dev
+yarn run build  # build
+```
+
 ## Technology Stack
 
 - 👆 Vue3 + Pinia
