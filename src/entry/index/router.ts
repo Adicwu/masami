@@ -6,6 +6,7 @@ import {
   createRouteSCM
 } from '@/class/routeScrollCache.class'
 import { WEB_NAME } from '@/common/static'
+import { getToken } from '@/stores/user.store'
 
 /**
  * 自动导入路由
@@ -18,7 +19,7 @@ function loadRoutes(): RouteRecordRaw[] {
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: () => import('@/views/Home/Index.vue'),
+    component: () => import('@/views/Search/Index.vue'),
     meta: {
       title: WEB_NAME,
       dom: '#home'
@@ -43,6 +44,10 @@ router.beforeEach((to, from, next) => {
       message: '请先配置服务器地址'
     })
     next({ name: 'Setting' })
+  }
+  const token = getToken()
+  if (!token) {
+    location.href = '/'
   }
   next()
 })

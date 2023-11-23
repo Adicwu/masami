@@ -53,3 +53,7 @@ export function copyText(text: string | number) {
     type: 'success'
   })
 }
+
+export function splitWith(v?: string, k = ',') {
+  return (v || '').split(k).filter((item) => item)
+}

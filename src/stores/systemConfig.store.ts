@@ -10,7 +10,8 @@ interface StaticResource {
 }
 
 export function getServerIp() {
-  return localStorage.getItem(REQUEST_BASEURL_STORE_KEY) || ''
+  return 'http://16.163.11.5:7077'
+  //  localStorage.getItem(REQUEST_BASEURL_STORE_KEY) || ''
 }
 
 export function getStaticResource() {

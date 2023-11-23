@@ -16,7 +16,7 @@
       />
     </SearchHeader>
 
-    <transition enter-active-class="fade-in">
+    <!-- <transition enter-active-class="fade-in">
       <article
         v-show="filterVisible && !filterConfig.pending"
         class="search-filter"
@@ -56,7 +56,7 @@
           @change="searchByFilter(true)"
         />
       </article>
-    </transition>
+    </transition> -->
     <main ref="searchMainEl" class="search-main">
       <transition
         enter-active-class="animate__fadeIn"
@@ -165,11 +165,11 @@ function filterModule(init: () => void) {
   }
 
   ;(async () => {
-    filterConfig.org = await Api.getComicFilterConfig()
-    if (filterConfig.org.length > 0) {
-      filter.cate = filterConfig.org[0].id
-      filter.type = getVal(() => filterConfig.org[0].value[0].value, '')
-    }
+    // filterConfig.org = await Api.getComicFilterConfig()
+    // if (filterConfig.org.length > 0) {
+    //   filter.cate = filterConfig.org[0].id
+    //   filter.type = getVal(() => filterConfig.org[0].value[0].value, '')
+    // }
     filterConfig.pending = false
     init()
   })()
@@ -253,7 +253,7 @@ export default defineComponent({
       clear && resetFilter()
       searchHistory.add(filter.name)
       const { data, total } = await Api.searchComic({
-        name: filter.name,
+        keyword: filter.name,
         page: pager.currnet - 1
       })
       pager.total = total

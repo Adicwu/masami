@@ -1,4 +1,4 @@
-interface ApiFormat<T> {
+export interface ApiFormat<T> {
   /** 状态码 */
   code: number
   /** 状态文字 */
@@ -7,28 +7,30 @@ interface ApiFormat<T> {
   data: T
 }
 
+interface ComicInfo {
+  ID: string
+  TypeID: number
+  TypeName: string
+  UpdateAt: string
+  /** 声优列表,分隔 */
+  VodActor: string
+  VodClass: string
+  VodID: string
+  VodIntro: string
+  VodName: string
+  VodPic: string
+  VodScore: string
+  /** 状态 0未完结 1已完结 */
+  VodStatus: 0 | 1
+}
+
 export type Search = ApiFormat<{
   /** 当前返回页数 */
-  pageindex: number
+  page: number
   /** 总页数 */
-  pagetotal: number
+  total: number
   /** 动漫列表 */
-  results: {
-    /** 分类列表 */
-    category: string
-    /** 封面 */
-    cover: string
-    /** 首发时间 */
-    date: string
-    /** 介绍 */
-    description: string
-    /** 动漫id */
-    id: string
-    /** 动漫状态（更新、完结...） */
-    season: string
-    /** 动漫名称 */
-    title: string
-  }[]
+  data: ComicInfo[]
 }>
 
 export type Filter = ApiFormat<{
@@ -50,36 +52,13 @@ export type Filter = ApiFormat<{
 }>
 
 export type GetAnime = ApiFormat<{
-  /** 声优名字列表 */
-  actors: string[]
-  /** 分类列表 */
-  categories: string[]
-  /** 封面 */
-  cover: string
-  /**首发时间 */
-  first_date: string
-  /** 语言 */
-  lang: string
-  /** 作者 */
-  master: string
-  /** 播放列表 */
-  playlist: {
-    /** 播放源id-集列表 */
-    [prop: number]: {
-      /** 注意：此选项暂时无用 */
-      link: string
-      /** 当前集名称 */
-      title: string
-    }[]
-  }
-  /** 分数 */
-  rank: string
-  /** 发布国家 */
-  region: string
-  /** 动漫状态（更新、完结...） */
-  season: string
-  /** 动漫名称 */
-  title: string
+  data: ComicInfo
+  datainfo: {
+    Disc: string
+    ID: string
+    Value: string
+    VodId: string
+  }[]
 }>
 
 export type GetVideo = ApiFormat<{

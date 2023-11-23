@@ -47,7 +47,7 @@ export interface GetComicMainReturn {
       /** 名称 */
       name: string
       /** 值 */
-      value: number
+      value: string
     }[]
   >
   /** 名称 */

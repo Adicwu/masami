@@ -1,11 +1,13 @@
-import { getax } from '@/common/request/index'
+import { getax, postax } from '@/common/request/index'
 import { getVal } from '@sorarain/utils'
 import * as FnReturns from './type'
 import * as ApiType from './api.type'
 import { newError, badRequestNotify } from './utils'
+import { splitWith } from '@/utils/adLoadsh'
 
 export * from './type'
 export * from './pixiv'
+export * from './user'
 
 /**
  * 根据名称获取动漫列表
@@ -13,21 +15,22 @@ export * from './pixiv'
  * @returns
  */
 export async function searchComic(param: {
-  name: string
+  keyword: string
   page: number
 }): Promise<FnReturns.SearchComicReturn> {
   try {
     const {
-      data: {
-        data: { results, pagetotal }
-      }
-    } = await getax<ApiType.Search>(
-      `api/search/${param.name}?page=${param.page}`
-    )
-    if (results instanceof Array) {
+      data: { data }
+    } = await postax<ApiType.Search>(`api/search`, param)
+    if (data.data instanceof Array) {
       return {
-        data: results,
-        total: (pagetotal || 0) * 20
+        data: data.data.map((item) => ({
+          cover: item.VodPic,
+          id: item.VodID,
+          season: item.VodStatus === 0 ? '连载中' : '已完结',
+          title: item.VodName
+        })),
+        total: data.total
       }
     } else {
       throw newError()
@@ -93,32 +96,40 @@ export async function getComicMain(
 ): Promise<FnReturns.GetComicMainReturn | null> {
   try {
     const {
-      data: { data }
-    } = await getax<ApiType.GetAnime>(`api/getAnime/${id}`)
-
+      data: {
+        data: { datainfo = [], data }
+      }
+    } = await getax<ApiType.GetAnime>(`api/VodIdItem?VodId=${id}`)
     const playlist = new Map()
-    Object.entries(data.playlist || {}).forEach(([k, v]) => {
-      playlist.set(
-        k,
-        v.map((item, index) => ({
-          name: String(item.title),
-          value: index
-        }))
-      )
-    })
+    // Object.entries(data.playlist || {}).forEach(([k, v]) => {
+    //   playlist.set(
+    //     k,
+    //     v.map((item, index) => ({
+    //       name: String(item.title),
+    //       value: index
+    //     }))
+    //   )
+    // })
+    playlist.set(
+      '2333',
+      (datainfo || []).map((item) => ({
+        name: item.Disc,
+        value: item.Value
+      }))
+    )
 
     return {
       playlist,
-      title: data.title,
-      season: data.season || '未知',
-      region: data.region || '未知',
-      rank: data.rank || '',
-      master: data.master || '未知',
-      lang: data.lang || '未知',
-      firstDate: data.first_date || '未知',
-      cover: data.cover || '',
-      voiceActors: data.actors || [],
-      cates: data.categories || []
+      title: data.VodName,
+      season: '-',
+      region: data.TypeName || '-',
+      rank: data.VodScore || '',
+      master: '-',
+      lang: '-',
+      firstDate: '-',
+      cover: data.VodPic || '',
+      voiceActors: splitWith(data.VodActor),
+      cates: [data.VodClass]
     }
   } catch {
     badRequestNotify('api/getAnime')

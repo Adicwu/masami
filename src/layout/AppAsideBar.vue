@@ -22,12 +22,12 @@ export default defineComponent({
   setup() {
     const $route = useRoute()
     const routeList = [
-      {
-        name: '首页',
-        routeName: 'Home',
-        routePath: 'home',
-        icon: 'homefill'
-      },
+      // {
+      //   name: '首页',
+      //   routeName: 'Home',
+      //   routePath: 'home',
+      //   icon: 'homefill'
+      // },
       {
         name: '搜索',
         routeName: 'Search',
@@ -45,13 +45,13 @@ export default defineComponent({
         routeName: 'Pixiv',
         routePath: 'pixiv',
         icon: 'iccosplay'
-      },
-      {
-        name: '系统设置',
-        routeName: 'Setting',
-        routePath: 'setting',
-        icon: 'setting1'
       }
+      // {
+      //   name: '系统设置',
+      //   routeName: 'Setting',
+      //   routePath: 'setting',
+      //   icon: 'setting1'
+      // }
     ]
     const sliderStyle = computed(() => {
       const routeIndex = routeList.findIndex((item) =>

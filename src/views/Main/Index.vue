@@ -106,19 +106,20 @@ function comicInfoModule(comicId: Ref<ComicId>, init: () => void) {
 
   const comicInit = async (comicId: ComicId) => {
     isPending.value = true
-    const [urls, main] = await Promise.all([
-      Api.getVideoUrl(comicId),
-      Api.getComicMain(comicId)
-    ])
+    // const [urls, main] = await Promise.all([
+    //   Api.getVideoUrl(comicId),
+    //   Api.getComicMain(comicId)
+    // ])
+    const main = await Api.getComicMain(comicId)
 
-    comicUrls.value = urls
+    // comicUrls.value = urls
     if (main) {
       comic.playlist = main.playlist
       autoObjAssign(comic, main)
 
-      Api.vilipixSearch({
-        name: comic.title
-      }).then(({ list }) => (comicImglist.value = list))
+      // Api.vilipixSearch({
+      //   name: comic.title
+      // }).then(({ list }) => (comicImglist.value = list))
 
       document.title = comic.title
       isPending.value = false
@@ -193,17 +194,25 @@ export default defineComponent({
       currentItem: null,
       bads: [],
       get list() {
-        return comicUrls.value.map((item) => {
-          const playlist = comic.playlist.get(item.key)
-          return {
-            name: `播放源(${item.key})`,
-            orgId: item.key,
-            values: item.value.map((url, index) => ({
-              name: playlist?.[index]?.name || '未知',
-              value: url
-            }))
+        // return comicUrls.value.map((item) => {
+        //   const playlist = comic.playlist.get(item.key)
+        //   return {
+        //     name: `播放源(${item.key})`,
+        //     orgId: item.key,
+        //     values: item.value.map((url, index) => ({
+        //       name: playlist?.[index]?.name || '未知',
+        //       value: url
+        //     }))
+        //   }
+        // })
+        const playlist = comic.playlist.get('2333') || []
+        return [
+          {
+            name: '播放源',
+            orgId: '2333',
+            values: playlist || []
           }
-        })
+        ]
       }
     })
     /** 播放器初始化进度 */
